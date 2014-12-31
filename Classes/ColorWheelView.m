@@ -119,7 +119,7 @@ typedef struct {
   { return [NSSet setWithObjects:@"selectedPoint", @"brightness", nil]; }
 
 - (UIColor *) selectedColor
-  { return [isa colorForPoint:selectedPoint withBrighness:brightness]; }
+  { return [self.class colorForPoint:selectedPoint withBrighness:brightness]; }
 
 
 - (CGRect) projectionRect
