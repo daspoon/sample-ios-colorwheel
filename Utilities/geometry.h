@@ -20,7 +20,7 @@ inline static CGFloat GxRectAspectRatio(CGRect rect)
   { return CGRectGetWidth(rect)/CGRectGetHeight(rect); }
 
 
-FOUNDATION_EXPORT CGRect GxFramedImageRect(CGRect inputRect, CGFloat outputAspectRatio, BOOL shrink=YES);
+FOUNDATION_EXPORT CGRect GxFramedImageRect(CGRect inputRect, CGFloat outputAspectRatio, BOOL shrink);
     // Return a rectangle with the specified aspect ratio derived from the given rectangle as follows:
     // if 'shrink' is YES then the result is the largest rectangle enclosed by inputRect; otherwise it
     // is the smallest rectangle enclosing inputRect.  In either case it is intended that the center
