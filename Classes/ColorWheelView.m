@@ -22,14 +22,6 @@ typedef struct {
 @synthesize numberOfSlices, borderColor, selectedPoint, brightness, delegate;
 
 
-- (void) dealloc
-  {
-    [borderColor release];
-
-    [super dealloc];
-  }
-
-
 - (void) awakeFromNib
   {
     [super awakeFromNib];
@@ -205,41 +197,37 @@ static void GxConvertHSBToRGB(float h, float s, float v, float &r, float &g, flo
 
 - (void) createES2State
   {
+    NSString *error = nil;
+
     [super createES2State];
 
     // Create and compile a vertex shader.
-    GLchar *message;
-    vertexShader = GxCreateCompiledShader(GL_VERTEX_SHADER, &message,
-        "attribute vec4 point, color;",
-        "uniform mat4 projection;",
-        "varying highp vec4 fragColor;",
-        "void main(void) {",
-        "  gl_Position = projection * point;",
-        "  fragColor = color;",
-        "}",
-        NULL);
+    vertexShader = GxCreateCompiledShader(GL_VERTEX_SHADER, &error, @[
+        @"attribute vec4 point, color;",
+        @"uniform mat4 projection;",
+        @"varying highp vec4 fragColor;",
+        @"void main(void) {",
+        @"  gl_Position = projection * point;",
+        @"  fragColor = color;",
+        @"}"]);
     if (vertexShader == 0) {
-      NSLog(@"vertex shader compilation failed: %s", message);
-      free(message);
+      NSLog(@"vertex shader compilation failed: %@", error);
     }
 
     // Create and compile a fragment shader.
-    fragmentShader = GxCreateCompiledShader(GL_FRAGMENT_SHADER, &message, 
-        "varying highp vec4 fragColor;",
-        "void main(void) {",
-        "  gl_FragColor = fragColor;",
-        "}",
-        NULL);
+    fragmentShader = GxCreateCompiledShader(GL_FRAGMENT_SHADER, &error, @[
+        @"varying highp vec4 fragColor;",
+        @"void main(void) {",
+        @"  gl_FragColor = fragColor;",
+        @"}"]);
     if (fragmentShader == 0) {
-      NSLog(@"fragment shader compilation failed: %s", message);
-      free(message);
+      NSLog(@"fragment shader compilation failed: %@", error);
     }
 
     // Create a program linking the two shaders.
-    program = GxCreateLinkedProgram(&message, vertexShader, fragmentShader, NULL);
+    program = GxCreateLinkedProgram(&error, vertexShader, fragmentShader, NULL);
     if (program == 0) {
-      NSLog(@"program linking failed: %s", message);
-      free(message);
+      NSLog(@"program linking failed: %@", error);
     }
 
     // Get the location of our projection matrix uniform.

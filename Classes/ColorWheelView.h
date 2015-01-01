@@ -15,12 +15,6 @@
 
 @interface GxColorWheelView : GxEAGLView
   {
-    GLuint        numberOfSlices;
-    UIColor      *borderColor;
-    CGPoint       selectedPoint;
-    CGFloat       brightness;
-    id            delegate;
-
     GLuint        program;              // program name
     GLuint        vertexShader;         // shader name
     GLuint        fragmentShader;       // shader name

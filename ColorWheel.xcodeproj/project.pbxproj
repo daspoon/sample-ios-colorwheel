@@ -24,7 +24,7 @@
 		55CEE4691A54CDC300FA25AF /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */; };
 		55CEE46B1A54D07000FA25AF /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */; };
 		55CEE4781A55CB8300FA25AF /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4771A55CB8300FA25AF /* ColorView.swift */; };
-		55CEE47B1A55D5E400FA25AF /* ColorWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E511985AAA008DACC0 /* ColorWheelView.m */; };
+		55CEE47E1A55FFFE00FA25AF /* ColorWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E511985AAA008DACC0 /* ColorWheelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -232,8 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CEE4691A54CDC300FA25AF /* ColorPickerViewController.swift in Sources */,
+				55CEE47E1A55FFFE00FA25AF /* ColorWheelView.m in Sources */,
 				55CEE4781A55CB8300FA25AF /* ColorView.swift in Sources */,
-				55CEE47B1A55D5E400FA25AF /* ColorWheelView.m in Sources */,
 				55C6B0EB11985AC9008DACC0 /* EAGLView.m in Sources */,
 				55CEE4551A54A62E00FA25AF /* AppDelegate.swift in Sources */,
 				55CEE4641A54BFE400FA25AF /* TableViewController.swift in Sources */,
@@ -286,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
@@ -301,6 +302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;

@@ -12,13 +12,13 @@
 #import <OpenGLES/ES2/gl.h>
 
 
-GLuint GxCreateCompiledShader(GLenum type, GLchar **error_p, const GLchar *string, ...) NS_REQUIRES_NIL_TERMINATION;
+GLuint GxCreateCompiledShader(GLenum type, NSString **error_p, NSArray *source);
     // Create and compile a shader of the given type (viz. GL_FRAGMENT_SHADER or GL_VERTEX_SHADER)
     // from the given NULL-terminated list of source strings.  If a compilation error occurs then 0
     // is returned and error_p is set the generated message and be freed by the caller.  The caller
     // is responsible for deleting the returned shader (via glDeleteShader).
 
-GLuint GxCreateLinkedProgram(GLchar **error_p, GLuint shader, ...) NS_REQUIRES_NIL_TERMINATION;
+GLuint GxCreateLinkedProgram(NSString **error_p, GLuint shader, ...) NS_REQUIRES_NIL_TERMINATION;
     // Create and link a program from the given NULL-terminated list of shaders.  If a link error
     // occurs then error_p s set to the generated message and must be freed by the caller.  The
     // caller is responsible for deleting the returned program (via. glDeleteProgram).
@@ -38,15 +38,25 @@ inline static GLenum arrayFromIndex(GLuint index) {
 
 inline static void enableVertexAttribArray(EAGLRenderingAPI API, GLuint index) {
     switch (API) {
-      case kEAGLRenderingAPIOpenGLES1 : glEnableClientState(arrayFromIndex(index)); break;
-      case kEAGLRenderingAPIOpenGLES2 : glEnableVertexAttribArray(index);           break;
+      case kEAGLRenderingAPIOpenGLES1 :
+        glEnableClientState(arrayFromIndex(index));
+        break;
+      case kEAGLRenderingAPIOpenGLES2 :
+      case kEAGLRenderingAPIOpenGLES3 :
+        glEnableVertexAttribArray(index);
+        break;
     }
   }
 
 inline static void disableVertexAttribArray(EAGLRenderingAPI API, GLuint index) {
     switch (API) {
-      case kEAGLRenderingAPIOpenGLES1 : glDisableClientState(arrayFromIndex(index)); break;
-      case kEAGLRenderingAPIOpenGLES2 : glDisableVertexAttribArray(index);           break;
+      case kEAGLRenderingAPIOpenGLES1 :
+        glDisableClientState(arrayFromIndex(index));
+        break;
+      case kEAGLRenderingAPIOpenGLES2 :
+      case kEAGLRenderingAPIOpenGLES3 :
+        glDisableVertexAttribArray(index);
+        break;
     }
   }
 
@@ -61,6 +71,7 @@ inline static void vertexAttribPointer(EAGLRenderingAPI API, GLuint index, GLint
         }
         break;
       case kEAGLRenderingAPIOpenGLES2 :
+      case kEAGLRenderingAPIOpenGLES3 :
         glVertexAttribPointer(index, size, type, normalized, stride, ptr);
         break;
     }
@@ -76,6 +87,7 @@ inline static void vertexAttrib4f(EAGLRenderingAPI API, GLuint index, GLfloat x,
         }
         break;
       case kEAGLRenderingAPIOpenGLES2 :
+      case kEAGLRenderingAPIOpenGLES3 :
         glVertexAttrib4f(index, x, y, z, w);
         break;
     }

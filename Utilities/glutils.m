@@ -29,22 +29,13 @@ void setOrtho(GLfloat P[16], CGFloat left, CGFloat right, CGFloat bottom, CGFloa
   }
 
 
-GLuint GxCreateCompiledShader(GLenum type, GLchar **error_p, const GLchar *string, ...)
+GLuint GxCreateCompiledShader(GLenum type, NSString **error_p, NSArray *source)
   {
-    va_list ap;
-
-    GLuint n_strings = 0;
-    va_start(ap, string);
-    for (const GLchar *s = string; s != nil; s = va_arg(ap, const GLchar *))
-      ++n_strings;
-    va_end(ap);
-
+    GLuint n_strings = [source count];
     const GLchar **strings = (const GLchar **)malloc(n_strings * sizeof(const GLchar *));
-    va_start(ap, string);
-    GLuint i = 0;
-    for (const GLchar *s = string; s != nil; s = va_arg(ap, const GLchar *))
-      strings[i++] = s;
-    va_end(ap);
+    for (GLuint i = 0; i < n_strings; ++i) {
+      strings[i] = [source[i] UTF8String];
+    }
 
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, n_strings, strings, NULL);
@@ -56,8 +47,9 @@ GLuint GxCreateCompiledShader(GLenum type, GLchar **error_p, const GLchar *strin
       if (error_p) {
         GLint length = 0;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
-        *error_p = (GLchar *)malloc(length+1);
-        glGetShaderInfoLog(shader, length, NULL, *error_p);
+        NSMutableData *data = [NSMutableData dataWithLength:(length+1)];
+        glGetShaderInfoLog(shader, length, NULL, (GLchar *)data.mutableBytes);
+        *error_p = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
       }
       glDeleteShader(shader);
       shader = 0;
@@ -69,7 +61,7 @@ GLuint GxCreateCompiledShader(GLenum type, GLchar **error_p, const GLchar *strin
   }
 
 
-GLuint GxCreateLinkedProgram(GLchar **error_p, GLuint shader, ...)
+GLuint GxCreateLinkedProgram(NSString **error_p, GLuint shader, ...)
   {
     GLuint program = glCreateProgram();
 
@@ -87,8 +79,9 @@ GLuint GxCreateLinkedProgram(GLchar **error_p, GLuint shader, ...)
       if (error_p) {
         GLint length;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
-        *error_p = (GLchar *)malloc(length+1);
-        glGetProgramInfoLog(program, length, NULL, *error_p);
+        NSMutableData *data = [NSMutableData dataWithLength:(length+1)];
+        glGetProgramInfoLog(program, length, NULL, (GLchar *)data.mutableBytes);
+        *error_p = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
       }
       glDeleteProgram(program);
       program = 0;

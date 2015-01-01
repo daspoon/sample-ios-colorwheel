@@ -23,7 +23,7 @@
     if ((self = [super initWithFrame:aRect]) == nil)
       return nil;
 
-    context = [aContext retain];
+    context = aContext;
 
     [self awakeFromNib];
 
@@ -34,14 +34,6 @@
 - (id) initWithFrame:(CGRect)aRect
   {
     return [self initWithFrame:aRect context:nil];
-  }
-
-
-- (void) dealloc
-  {
-    [context release];
-
-    [super dealloc];
   }
 
 
