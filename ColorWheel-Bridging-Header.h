@@ -8,6 +8,7 @@
 #ifndef ColorWheel_Bridging_Header_h
 #define ColorWheel_Bridging_Header_h
 
-#import "TableViewController.h"
+#import "ColorWheelView.h"
+#import "geometry.h"
 
 #endif

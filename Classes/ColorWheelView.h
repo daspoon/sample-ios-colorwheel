@@ -48,19 +48,8 @@
 @property (nonatomic) CGFloat brightness;
     // The brightness of the selected color, between 0 and 1.
 
-@property (nonatomic, assign) NSObject<GxColorWheelViewDelegate> *delegate;
+@property (nonatomic, assign) IBOutlet NSObject<GxColorWheelViewDelegate> *delegate;
     // An object which will be notified of changes to the selected color.
-
-@property (nonatomic, readonly) UIColor *selectedColor;
-    // The selected color.
-
-
-+ (UIColor *) colorForPoint:(CGPoint)point withBrighness:(CGFloat)value;
-    // Return the color corresponding to the given point in the unit circle (corresponding 
-    // to hue and saturation) and brighness value (between 0 and 1).
-
-+ (void) getPoint:(CGPoint *)point_p andBrighness:(CGFloat *)value_p forColor:(UIColor *)color;
-    // Return the point and brightness corresponding to the given color.
 
 @end
 

@@ -13,20 +13,18 @@
 		5593DF201188F9D100FCEF91 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593DF1F1188F9D100FCEF91 /* OpenGLES.framework */; };
 		5593DF261188F9DD00FCEF91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593DF251188F9DD00FCEF91 /* CoreGraphics.framework */; };
 		5593DF2C1188F9ED00FCEF91 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593DF2B1188F9ED00FCEF91 /* QuartzCore.framework */; };
-		55C6B0CF119856C4008DACC0 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0CE119856C4008DACC0 /* TableViewController.m */; };
-		55C6B0E611985AAA008DACC0 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E111985AAA008DACC0 /* ColorPickerViewController.m */; };
-		55C6B0E711985AAA008DACC0 /* ColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E311985AAA008DACC0 /* ColorView.m */; };
-		55C6B0E811985AAA008DACC0 /* ColorWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E511985AAA008DACC0 /* ColorWheelView.m */; };
 		55C6B0EB11985AC9008DACC0 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0EA11985AC9008DACC0 /* EAGLView.m */; };
-		55C6B11A11985F73008DACC0 /* UIColor-GxGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B11711985F73008DACC0 /* UIColor-GxGraphics.m */; };
-		55C6B11B11985F73008DACC0 /* UINavigationController-GxTouchKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B11911985F73008DACC0 /* UINavigationController-GxTouchKit.m */; };
 		55C6B12811986012008DACC0 /* geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B12711986012008DACC0 /* geometry.m */; };
 		55C6B132119860F1008DACC0 /* glutils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B131119860F1008DACC0 /* glutils.m */; };
-		55C6B13711986140008DACC0 /* colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B13611986140008DACC0 /* colors.m */; };
 		55C6B2E911989926008DACC0 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55C6B2E811989926008DACC0 /* ReadMe.rtf */; };
 		55CEE4551A54A62E00FA25AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4541A54A62E00FA25AF /* AppDelegate.swift */; };
 		55CEE4591A54AD6A00FA25AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CEE4571A54AD6A00FA25AF /* LaunchScreen.xib */; };
 		55CEE45C1A54AE5E00FA25AF /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CEE45B1A54AE5E00FA25AF /* MainWindow.xib */; };
+		55CEE4641A54BFE400FA25AF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4631A54BFE400FA25AF /* TableViewController.swift */; };
+		55CEE4691A54CDC300FA25AF /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */; };
+		55CEE46B1A54D07000FA25AF /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */; };
+		55CEE4781A55CB8300FA25AF /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4771A55CB8300FA25AF /* ColorView.swift */; };
+		55CEE47B1A55D5E400FA25AF /* ColorWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E511985AAA008DACC0 /* ColorWheelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,31 +36,23 @@
 		5593DF1F1188F9D100FCEF91 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5593DF251188F9DD00FCEF91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5593DF2B1188F9ED00FCEF91 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		55C6B0CD119856C4008DACC0 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		55C6B0CE119856C4008DACC0 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		55C6B0E011985AAA008DACC0 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
-		55C6B0E111985AAA008DACC0 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
-		55C6B0E211985AAA008DACC0 /* ColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorView.h; sourceTree = "<group>"; };
-		55C6B0E311985AAA008DACC0 /* ColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorView.m; sourceTree = "<group>"; };
 		55C6B0E411985AAA008DACC0 /* ColorWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorWheelView.h; sourceTree = "<group>"; };
 		55C6B0E511985AAA008DACC0 /* ColorWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorWheelView.m; sourceTree = "<group>"; };
 		55C6B0E911985AC9008DACC0 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		55C6B0EA11985AC9008DACC0 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
-		55C6B11611985F73008DACC0 /* UIColor-GxGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor-GxGraphics.h"; path = "../Categories/UIColor-GxGraphics.h"; sourceTree = "<group>"; };
-		55C6B11711985F73008DACC0 /* UIColor-GxGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor-GxGraphics.m"; path = "../Categories/UIColor-GxGraphics.m"; sourceTree = "<group>"; };
-		55C6B11811985F73008DACC0 /* UINavigationController-GxTouchKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController-GxTouchKit.h"; path = "../Categories/UINavigationController-GxTouchKit.h"; sourceTree = "<group>"; };
-		55C6B11911985F73008DACC0 /* UINavigationController-GxTouchKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController-GxTouchKit.m"; path = "../Categories/UINavigationController-GxTouchKit.m"; sourceTree = "<group>"; };
 		55C6B12611986012008DACC0 /* geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = geometry.h; path = ../Utilities/geometry.h; sourceTree = "<group>"; };
 		55C6B12711986012008DACC0 /* geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = geometry.m; path = ../Utilities/geometry.m; sourceTree = "<group>"; };
 		55C6B131119860F1008DACC0 /* glutils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = glutils.m; path = ../Utilities/glutils.m; sourceTree = "<group>"; };
-		55C6B13511986140008DACC0 /* colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = colors.h; path = ../Utilities/colors.h; sourceTree = "<group>"; };
-		55C6B13611986140008DACC0 /* colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = colors.m; path = ../Utilities/colors.m; sourceTree = "<group>"; };
 		55C6B24F1198859C008DACC0 /* glutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glutils.h; path = ../Utilities/glutils.h; sourceTree = "<group>"; };
 		55C6B2E811989926008DACC0 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
 		55CEE4541A54A62E00FA25AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55CEE4571A54AD6A00FA25AF /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		55CEE45B1A54AE5E00FA25AF /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		55CEE4621A54BF9A00FA25AF /* ColorWheel-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ColorWheel-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		55CEE4631A54BFE400FA25AF /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
+		55CEE4771A55CB8300FA25AF /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ColorWheel-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ColorWheel-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +78,6 @@
 				55CEE4621A54BF9A00FA25AF /* ColorWheel-Bridging-Header.h */,
 				55050405119BCDBB0085A7A2 /* Application-specific */,
 				55050406119BCDD40085A7A2 /* Library classes */,
-				55050407119BCE0C0085A7A2 /* Library categories */,
 				55050408119BCE120085A7A2 /* Library functions */,
 			);
 			name = Sources;
@@ -142,8 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				55CEE4541A54A62E00FA25AF /* AppDelegate.swift */,
-				55C6B0CD119856C4008DACC0 /* TableViewController.h */,
-				55C6B0CE119856C4008DACC0 /* TableViewController.m */,
+				55CEE4631A54BFE400FA25AF /* TableViewController.swift */,
 				32CA4F630368D1EE00C91783 /* ColorWheel_Prefix.pch */,
 			);
 			name = "Application-specific";
@@ -152,10 +140,9 @@
 		55050406119BCDD40085A7A2 /* Library classes */ = {
 			isa = PBXGroup;
 			children = (
-				55C6B0E011985AAA008DACC0 /* ColorPickerViewController.h */,
-				55C6B0E111985AAA008DACC0 /* ColorPickerViewController.m */,
-				55C6B0E211985AAA008DACC0 /* ColorView.h */,
-				55C6B0E311985AAA008DACC0 /* ColorView.m */,
+				55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */,
+				55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */,
+				55CEE4771A55CB8300FA25AF /* ColorView.swift */,
 				55C6B0E411985AAA008DACC0 /* ColorWheelView.h */,
 				55C6B0E511985AAA008DACC0 /* ColorWheelView.m */,
 				55C6B0E911985AC9008DACC0 /* EAGLView.h */,
@@ -164,22 +151,9 @@
 			name = "Library classes";
 			sourceTree = "<group>";
 		};
-		55050407119BCE0C0085A7A2 /* Library categories */ = {
-			isa = PBXGroup;
-			children = (
-				55C6B11611985F73008DACC0 /* UIColor-GxGraphics.h */,
-				55C6B11711985F73008DACC0 /* UIColor-GxGraphics.m */,
-				55C6B11811985F73008DACC0 /* UINavigationController-GxTouchKit.h */,
-				55C6B11911985F73008DACC0 /* UINavigationController-GxTouchKit.m */,
-			);
-			name = "Library categories";
-			sourceTree = "<group>";
-		};
 		55050408119BCE120085A7A2 /* Library functions */ = {
 			isa = PBXGroup;
 			children = (
-				55C6B13511986140008DACC0 /* colors.h */,
-				55C6B13611986140008DACC0 /* colors.m */,
 				55C6B12611986012008DACC0 /* geometry.h */,
 				55C6B12711986012008DACC0 /* geometry.m */,
 				55C6B24F1198859C008DACC0 /* glutils.h */,
@@ -244,6 +218,7 @@
 			files = (
 				55CEE45C1A54AE5E00FA25AF /* MainWindow.xib in Resources */,
 				55CEE4591A54AD6A00FA25AF /* LaunchScreen.xib in Resources */,
+				55CEE46B1A54D07000FA25AF /* ColorPickerViewController.xib in Resources */,
 				5538751D1194905D007CCC0D /* Icon.png in Resources */,
 				55C6B2E911989926008DACC0 /* ReadMe.rtf in Resources */,
 			);
@@ -256,17 +231,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55C6B0CF119856C4008DACC0 /* TableViewController.m in Sources */,
-				55C6B0E611985AAA008DACC0 /* ColorPickerViewController.m in Sources */,
-				55C6B0E711985AAA008DACC0 /* ColorView.m in Sources */,
-				55C6B0E811985AAA008DACC0 /* ColorWheelView.m in Sources */,
+				55CEE4691A54CDC300FA25AF /* ColorPickerViewController.swift in Sources */,
+				55CEE4781A55CB8300FA25AF /* ColorView.swift in Sources */,
+				55CEE47B1A55D5E400FA25AF /* ColorWheelView.m in Sources */,
 				55C6B0EB11985AC9008DACC0 /* EAGLView.m in Sources */,
-				55C6B11A11985F73008DACC0 /* UIColor-GxGraphics.m in Sources */,
 				55CEE4551A54A62E00FA25AF /* AppDelegate.swift in Sources */,
-				55C6B11B11985F73008DACC0 /* UINavigationController-GxTouchKit.m in Sources */,
+				55CEE4641A54BFE400FA25AF /* TableViewController.swift in Sources */,
 				55C6B12811986012008DACC0 /* geometry.m in Sources */,
 				55C6B132119860F1008DACC0 /* glutils.m in Sources */,
-				55C6B13711986140008DACC0 /* colors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

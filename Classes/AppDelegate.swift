@@ -20,10 +20,8 @@ class ColorWheelAppDelegate : UIResponder, UIApplicationDelegate
       {
         window = sender.keyWindow
 
-        var navigationController = UINavigationController(rootViewController: MyTableViewController(style:UITableViewStyle.Plain))
-        navigationController.toolbarHidden = false
+        var navigationController = UINavigationController(rootViewController: ColorWheelTableViewController())
         navigationController.navigationBar.translucent = false
-        navigationController.toolbar.translucent = false
         
         window!.rootViewController = navigationController
         window!.makeKeyWindow()

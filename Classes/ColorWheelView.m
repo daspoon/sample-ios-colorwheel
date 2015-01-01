@@ -8,8 +8,6 @@
 #import "ColorWheelView.h"
 #import "glutils.h"
 #import "geometry.h"
-#import "colors.h"
-#import "UIColor-GxGraphics.h"
 
 
 // The format of vertex data in the wheelVertexBuffer buffer.
@@ -24,53 +22,22 @@ typedef struct {
 @synthesize numberOfSlices, borderColor, selectedPoint, brightness, delegate;
 
 
-- (id) initWithFrame:(CGRect)aRect context:(EAGLContext *)aContext
-  {
-    if ((self = [super initWithFrame:aRect context:aContext]) == nil)
-      return nil;
-
-    numberOfSlices = 64;
-    borderColor    = nil;
-    selectedPoint  = CGPointMake(0.5, 0.5);
-    brightness     = 1.0;
-
-    return self;
-  }
-
-
 - (void) dealloc
   {
     [borderColor release];
+
     [super dealloc];
   }
 
 
-+ (UIColor *) colorForPoint:(CGPoint)point withBrighness:(CGFloat)value
+- (void) awakeFromNib
   {
-  // note: it is expected that point lies within the unit circle...
-    CGFloat hue = (M_PI + atan2(-point.y, -point.x)) / (2 * M_PI);
-    CGFloat saturation = sqrt(point.x*point.x + point.y*point.y);
-    return [[[UIColor alloc] initWithHue:hue saturation:saturation brightness:value alpha:1.0] autorelease];
-  }
+    [super awakeFromNib];
 
-
-+ (void) getPoint:(CGPoint *)point_p andBrighness:(CGFloat *)value_p forColor:(UIColor *)color
-  {
-    NSAssert(point_p && value_p && color, @"invalid arguments");
-
-    CGFloat r, g, b, h, s, v, a;
-    [color getRed:&r green:&g blue:&b alpha:&a];
-    GxConvertRGBToHSB(r, g, b, h, s, v);
-
-    if (s == 0) // h == NAN
-      *point_p = CGPointMake(0, 0);
-    else {
-      float a = h * (M_PI * 2);
-      point_p->x = cos(a) * s;
-      point_p->y = sin(a) *s;
-    }
-
-    *value_p = v;
+    numberOfSlices = 256;
+    borderColor    = nil;
+    selectedPoint  = CGPointMake(0.5, 0.5);
+    brightness     = 1.0;
   }
 
 
@@ -115,18 +82,36 @@ typedef struct {
   }
 
 
-+ (NSSet *) keyPathsForValuesAffectingSelectedColor
-  { return [NSSet setWithObjects:@"selectedPoint", @"brightness", nil]; }
-
-- (UIColor *) selectedColor
-  { return [self.class colorForPoint:selectedPoint withBrighness:brightness]; }
-
-
 - (CGRect) projectionRect
   {
     // As viewing volume we use an orthographic projection corresponding to the smallest rectangle
     // which encloses [-1..1]x[-1..1] and has the aspect ratio of our bounds
     return GxOuterImageRect(CGRectMake(-1,-1,2,2), GxRectAspectRatio(self.bounds));
+  }
+
+
+static void GxConvertHSBToRGB(float h, float s, float v, float &r, float &g, float &b)
+  {
+  // Adapted from "3D Computer Graphics", by Alan Watt, second edition pp. 418-419
+    if (s == 0)
+      r = g = b = v;
+    else {
+      if (h == 1) h = 0;
+      h = h * 360 / 60;
+      int i = floor(h);
+      float f = h - i;
+      float p = v * (1 - s);
+      float q = v * (1 - (s * f));
+      float t = v * (1 - (s * (1 - f)));
+      switch (i) {
+        case 0 : r = v; g = t; b = p; break;
+        case 1 : r = q; g = v; b = p; break;
+        case 2 : r = p; g = v; b = t; break;
+        case 3 : r = p; g = q; b = v; break;
+        case 4 : r = t; g = p; b = v; break;
+        case 5 : r = v; g = p; b = q; break;
+      }
+    }
   }
 
 

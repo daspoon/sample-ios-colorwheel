@@ -10,7 +10,6 @@
 #import "EAGLView.h"
 #import <OpenGLES/ES1/glext.h>
 #import <QuartzCore/QuartzCore.h>
-#import "UIColor-GxGraphics.h"
 
 
 @implementation GxEAGLView
@@ -21,20 +20,12 @@
 
 - (id) initWithFrame:(CGRect)aRect context:(EAGLContext *)aContext
   {
-    NSAssert(aContext != nil, @"invalid argument");
-
     if ((self = [super initWithFrame:aRect]) == nil)
       return nil;
 
     context = [aContext retain];
 
-    CAEAGLLayer *layer = (CAEAGLLayer *)self.layer;
-    layer.opaque = YES;
-    layer.drawableProperties
-        = [NSDictionary dictionaryWithObjectsAndKeys:
-                  [NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking,
-                  kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
-                  nil];
+    [self awakeFromNib];
 
     return self;
   }
@@ -42,18 +33,33 @@
 
 - (id) initWithFrame:(CGRect)aRect
   {
-    EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    if (aContext == nil)
-      aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
-
-    return [self initWithFrame:aRect context:aContext];
+    return [self initWithFrame:aRect context:nil];
   }
 
 
 - (void) dealloc
   {
     [context release];
+
     [super dealloc];
+  }
+
+
+- (void) awakeFromNib
+  {
+    [super awakeFromNib];
+
+    if (context == nil)
+      context = [self.class createOpenGLContext];
+  }
+
+
++ (EAGLContext *) createOpenGLContext
+  {
+    EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    if (aContext == nil)
+      aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
+    return aContext;
   }
 
 
@@ -146,6 +152,14 @@
     [EAGLContext setCurrentContext:context];
 
     if (self.window) {
+      CAEAGLLayer *layer = (CAEAGLLayer *)self.layer;
+      layer.opaque = YES;
+      layer.drawableProperties
+          = [NSDictionary dictionaryWithObjectsAndKeys:
+                    [NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking,
+                    kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
+                    nil];
+
       [self createFramebuffer];
       switch (context.API) {
         case kEAGLRenderingAPIOpenGLES1 :
@@ -157,6 +171,7 @@
         default :
           NSAssert(0, @"unhandled case");
       }
+      [self setNeedsLayout];
     }
     else {
       switch (context.API) {
