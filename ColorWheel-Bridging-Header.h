@@ -9,7 +9,6 @@
 #define ColorWheel_Bridging_Header_h
 
 #import "geometry.h"
-#import "EAGLView.h"
 #import "EAGLContext-GxCoreUI.h"
 
 #endif
