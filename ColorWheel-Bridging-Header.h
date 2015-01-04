@@ -8,7 +8,8 @@
 #ifndef ColorWheel_Bridging_Header_h
 #define ColorWheel_Bridging_Header_h
 
-#import "ColorWheelView.h"
 #import "geometry.h"
+#import "EAGLView.h"
+#import "EAGLContext-GxCoreUI.h"
 
 #endif

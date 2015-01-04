@@ -25,11 +25,11 @@
                         <constraint firstAttribute="height" constant="44" id="CP9-bj-CcH"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-95-RrM" userLabel="ColorWheelView" customClass="GxColorWheelView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-95-RrM" userLabel="ColorWheelView" customClass="GxColorWheelView" customModule="ColorWheel" customModuleProvider="target">
                     <rect key="frame" x="8" y="60" width="465" height="537"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="zcs-55-N7j"/>
+                        <outlet property="delegate" destination="-1" id="kSw-cs-QyD"/>
                     </connections>
                 </view>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O09-QK-JKN" userLabel="Brightness Slider">

@@ -13,9 +13,9 @@
 		5593DF201188F9D100FCEF91 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593DF1F1188F9D100FCEF91 /* OpenGLES.framework */; };
 		5593DF261188F9DD00FCEF91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593DF251188F9DD00FCEF91 /* CoreGraphics.framework */; };
 		5593DF2C1188F9ED00FCEF91 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593DF2B1188F9ED00FCEF91 /* QuartzCore.framework */; };
+		559C598F1A58785A005288CC /* UIColor-GxCoreUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559C598E1A58785A005288CC /* UIColor-GxCoreUI.swift */; };
 		55C6B0EB11985AC9008DACC0 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0EA11985AC9008DACC0 /* EAGLView.m */; };
 		55C6B12811986012008DACC0 /* geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B12711986012008DACC0 /* geometry.m */; };
-		55C6B132119860F1008DACC0 /* glutils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B131119860F1008DACC0 /* glutils.m */; };
 		55C6B2E911989926008DACC0 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55C6B2E811989926008DACC0 /* ReadMe.rtf */; };
 		55CEE4551A54A62E00FA25AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4541A54A62E00FA25AF /* AppDelegate.swift */; };
 		55CEE4591A54AD6A00FA25AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CEE4571A54AD6A00FA25AF /* LaunchScreen.xib */; };
@@ -24,7 +24,8 @@
 		55CEE4691A54CDC300FA25AF /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */; };
 		55CEE46B1A54D07000FA25AF /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */; };
 		55CEE4781A55CB8300FA25AF /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CEE4771A55CB8300FA25AF /* ColorView.swift */; };
-		55CEE47E1A55FFFE00FA25AF /* ColorWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C6B0E511985AAA008DACC0 /* ColorWheelView.m */; };
+		55DD1A121A57AB1E00420C5D /* EAGLContext-GxCoreUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1A111A57AB1E00420C5D /* EAGLContext-GxCoreUI.m */; };
+		55DD1A141A57ADAD00420C5D /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1A131A57ADAD00420C5D /* ColorWheelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,14 +37,11 @@
 		5593DF1F1188F9D100FCEF91 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5593DF251188F9DD00FCEF91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5593DF2B1188F9ED00FCEF91 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		55C6B0E411985AAA008DACC0 /* ColorWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorWheelView.h; sourceTree = "<group>"; };
-		55C6B0E511985AAA008DACC0 /* ColorWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorWheelView.m; sourceTree = "<group>"; };
+		559C598E1A58785A005288CC /* UIColor-GxCoreUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-GxCoreUI.swift"; sourceTree = "<group>"; };
 		55C6B0E911985AC9008DACC0 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		55C6B0EA11985AC9008DACC0 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		55C6B12611986012008DACC0 /* geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = geometry.h; path = ../Utilities/geometry.h; sourceTree = "<group>"; };
 		55C6B12711986012008DACC0 /* geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = geometry.m; path = ../Utilities/geometry.m; sourceTree = "<group>"; };
-		55C6B131119860F1008DACC0 /* glutils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = glutils.m; path = ../Utilities/glutils.m; sourceTree = "<group>"; };
-		55C6B24F1198859C008DACC0 /* glutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glutils.h; path = ../Utilities/glutils.h; sourceTree = "<group>"; };
 		55C6B2E811989926008DACC0 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
 		55CEE4541A54A62E00FA25AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55CEE4571A54AD6A00FA25AF /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -53,6 +51,9 @@
 		55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
 		55CEE4771A55CB8300FA25AF /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		55DD1A101A57AB1E00420C5D /* EAGLContext-GxCoreUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EAGLContext-GxCoreUI.h"; sourceTree = "<group>"; };
+		55DD1A111A57AB1E00420C5D /* EAGLContext-GxCoreUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EAGLContext-GxCoreUI.m"; sourceTree = "<group>"; };
+		55DD1A131A57ADAD00420C5D /* ColorWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ColorWheel-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ColorWheel-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,10 +144,12 @@
 				55CEE4681A54CDC300FA25AF /* ColorPickerViewController.swift */,
 				55CEE46A1A54D07000FA25AF /* ColorPickerViewController.xib */,
 				55CEE4771A55CB8300FA25AF /* ColorView.swift */,
-				55C6B0E411985AAA008DACC0 /* ColorWheelView.h */,
-				55C6B0E511985AAA008DACC0 /* ColorWheelView.m */,
+				55DD1A131A57ADAD00420C5D /* ColorWheelView.swift */,
 				55C6B0E911985AC9008DACC0 /* EAGLView.h */,
 				55C6B0EA11985AC9008DACC0 /* EAGLView.m */,
+				55DD1A101A57AB1E00420C5D /* EAGLContext-GxCoreUI.h */,
+				55DD1A111A57AB1E00420C5D /* EAGLContext-GxCoreUI.m */,
+				559C598E1A58785A005288CC /* UIColor-GxCoreUI.swift */,
 			);
 			name = "Library classes";
 			sourceTree = "<group>";
@@ -156,8 +159,6 @@
 			children = (
 				55C6B12611986012008DACC0 /* geometry.h */,
 				55C6B12711986012008DACC0 /* geometry.m */,
-				55C6B24F1198859C008DACC0 /* glutils.h */,
-				55C6B131119860F1008DACC0 /* glutils.m */,
 			);
 			name = "Library functions";
 			sourceTree = "<group>";
@@ -231,14 +232,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DD1A141A57ADAD00420C5D /* ColorWheelView.swift in Sources */,
 				55CEE4691A54CDC300FA25AF /* ColorPickerViewController.swift in Sources */,
-				55CEE47E1A55FFFE00FA25AF /* ColorWheelView.m in Sources */,
 				55CEE4781A55CB8300FA25AF /* ColorView.swift in Sources */,
 				55C6B0EB11985AC9008DACC0 /* EAGLView.m in Sources */,
 				55CEE4551A54A62E00FA25AF /* AppDelegate.swift in Sources */,
 				55CEE4641A54BFE400FA25AF /* TableViewController.swift in Sources */,
 				55C6B12811986012008DACC0 /* geometry.m in Sources */,
-				55C6B132119860F1008DACC0 /* glutils.m in Sources */,
+				559C598F1A58785A005288CC /* UIColor-GxCoreUI.swift in Sources */,
+				55DD1A121A57AB1E00420C5D /* EAGLContext-GxCoreUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

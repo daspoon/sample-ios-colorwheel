@@ -1,35 +1,15 @@
 /*
 
-  Created by David Spooner on 4/16/10.
-  Copyright 2010 Lambda Software Corporation. All rights reserved.
+  Created by David Spooner
 
 */
 
-#import "glutils.h"
+#import "EAGLContext-GxCoreUI.h"
 
 
-void setOrtho(GLfloat P[16], CGFloat left, CGFloat right, CGFloat bottom, CGFloat top, CGFloat near, CGFloat far)
-  {
-    P[0*4+0] = 2 / (right - left);
-    P[1*4+0] = 0;
-    P[2*4+0] = 0;
-    P[3*4+0] = - (right + left) / (right - left);
-    P[0*4+1] = 0;
-    P[1*4+1] = 2 / (top - bottom);
-    P[2*4+1] = 0;
-    P[3*4+1] = - (top + bottom) / (top - bottom);
-    P[0*4+2] = 0;
-    P[1*4+2] = 0;
-    P[2*4+2] = -2 / (far - near);
-    P[3*4+2] = - (far + near) / (far - near);
-    P[0*4+3] = 0;
-    P[1*4+3] = 0;
-    P[2*4+3] = 0;
-    P[3*4+3] = 1;
-  }
+@implementation EAGLContext(GxCoreUI)
 
-
-GLuint GxCreateCompiledShader(GLenum type, NSString **error_p, NSArray *source)
+- (GLuint) createCompiledShader:(GLenum)type error:(NSString **)error_p withSourceStrings:(NSArray *)source
   {
     GLuint n_strings = [source count];
     const GLchar **strings = (const GLchar **)malloc(n_strings * sizeof(const GLchar *));
@@ -61,15 +41,14 @@ GLuint GxCreateCompiledShader(GLenum type, NSString **error_p, NSArray *source)
   }
 
 
-GLuint GxCreateLinkedProgram(NSString **error_p, GLuint shader, ...)
+- (GLuint) createLinkedProgramWithShaders:(NSArray *)shaders error:(NSString **)error_p
   {
     GLuint program = glCreateProgram();
 
-    va_list ap;
-    va_start(ap, shader);
-    for (GLuint s = shader; s != 0; s = va_arg(ap, GLuint))
-      glAttachShader(program, s);
-    va_end(ap);
+    [shaders enumerateObjectsUsingBlock:
+        ^(NSNumber *shader, NSUInteger index, BOOL *stop) {
+            glAttachShader(program, shader.integerValue);
+        }];
 
     glLinkProgram(program);
 
@@ -89,3 +68,5 @@ GLuint GxCreateLinkedProgram(NSString **error_p, GLuint shader, ...)
 
     return program;
   }
+
+@end
