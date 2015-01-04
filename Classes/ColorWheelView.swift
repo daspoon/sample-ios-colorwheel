@@ -32,7 +32,7 @@ func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:
 
 
 @IBDesignable
-class GxColorWheelView : UIView, GxEAGLViewDelegate
+class GxColorWheelView : UIView, GxOpenGLViewDelegate
   {
 
     var numberOfSlices: GLuint = 256
@@ -48,7 +48,7 @@ class GxColorWheelView : UIView, GxEAGLViewDelegate
 
     var pointSize: CGFloat = 0.03
 
-    var openGLView: GxEAGLView!
+    var openGLView: GxOpenGLView!
     var program: GLuint = 0
     var vertexShader: GLuint = 0
     var fragmentShader: GLuint = 0
@@ -66,7 +66,7 @@ class GxColorWheelView : UIView, GxEAGLViewDelegate
 
     override func awakeFromNib()
       {
-        openGLView = GxEAGLView(frame:self.bounds, context:GxEAGLView.createOpenGLContext())
+        openGLView = GxOpenGLView(frame:self.bounds, context:GxOpenGLView.createOpenGLContext())
         openGLView.autoresizingMask = UIViewAutoresizing.FlexibleWidth|UIViewAutoresizing.FlexibleHeight
         self.addSubview(openGLView)
 
@@ -164,9 +164,9 @@ class GxColorWheelView : UIView, GxEAGLViewDelegate
       }
 
 
-    // GxEAGLViewDelegate
+    // GxOpenGLViewDelegate
 
-    func createStateForOpenGLView(sender: GxEAGLView)
+    func createStateForOpenGLView(sender: GxOpenGLView)
       {
         var error: NSString?
 
@@ -226,7 +226,7 @@ class GxColorWheelView : UIView, GxEAGLViewDelegate
       }
 
 
-      func deleteStateForOpenGLView(sender: GxEAGLView)
+      func deleteStateForOpenGLView(sender: GxOpenGLView)
         {
           // Delete our program and shaders
           if program != 0 {
@@ -244,7 +244,7 @@ class GxColorWheelView : UIView, GxEAGLViewDelegate
         }
 
 
-      func drawOpenGLView(sender: GxEAGLView)
+      func drawOpenGLView(sender: GxOpenGLView)
         {
           glUseProgram(program)
 
