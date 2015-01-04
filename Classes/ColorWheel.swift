@@ -32,7 +32,7 @@ func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:
 
 
 @IBDesignable
-class GxColorWheelView : UIControl, GxOpenGLViewDelegate
+class GxColorWheel : UIControl, GxOpenGLViewDelegate
   {
 
     var numberOfSlices: GLuint = 256

@@ -25,7 +25,7 @@
                         <constraint firstAttribute="height" constant="44" id="CP9-bj-CcH"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-95-RrM" userLabel="ColorWheelView" customClass="GxColorWheelView" customModule="ColorWheel" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-95-RrM" userLabel="ColorWheelView" customClass="GxColorWheel" customModule="ColorWheel" customModuleProvider="target">
                     <rect key="frame" x="8" y="60" width="465" height="537"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
