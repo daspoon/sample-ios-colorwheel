@@ -32,22 +32,23 @@ func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:
 
 
 @IBDesignable
-class GxColorWheelView : GxEAGLView
+class GxColorWheelView : UIView, GxEAGLViewDelegate
   {
 
     var numberOfSlices: GLuint = 256
-      { didSet { wheelChanged=true; setNeedsDisplay()} }
+      { didSet { wheelChanged=true; openGLView?.setNeedsDisplay()} }
 
     var selectedPoint: CGPoint = CGPoint(x:0.5, y:0.5)
-      { didSet { pointChanged=true; setNeedsDisplay()} }
+      { didSet { pointChanged=true; openGLView?.setNeedsDisplay()} }
 
     var brightness: CGFloat = 1
-      { didSet { wheelChanged=true; setNeedsDisplay()} }
+      { didSet { wheelChanged=true; openGLView?.setNeedsDisplay()} }
 
     var borderColor: UIColor?
 
     var pointSize: CGFloat = 0.03
 
+    var openGLView: GxEAGLView!
     var program: GLuint = 0
     var vertexShader: GLuint = 0
     var fragmentShader: GLuint = 0
@@ -61,6 +62,22 @@ class GxColorWheelView : GxEAGLView
 
 
     @IBOutlet var delegate: AnyObject?
+
+
+    override func awakeFromNib()
+      {
+        openGLView = GxEAGLView(frame:self.bounds, context:GxEAGLView.createOpenGLContext())
+        openGLView.autoresizingMask = UIViewAutoresizing.FlexibleWidth|UIViewAutoresizing.FlexibleHeight
+        self.addSubview(openGLView)
+
+        // We emit the content-specific GL code
+        openGLView.delegate = self
+
+        // Disable interaction in the GL view so we get touch events
+        openGLView.userInteractionEnabled = false
+
+        openGLView.backgroundColor = UIColor.whiteColor()
+      }
 
 
     struct Vertex
@@ -147,9 +164,9 @@ class GxColorWheelView : GxEAGLView
       }
 
 
-    // GxEAGLView
+    // GxEAGLViewDelegate
 
-    override func createState()
+    func createStateForOpenGLView(sender: GxEAGLView)
       {
         var error: NSString?
 
@@ -174,7 +191,7 @@ class GxColorWheelView : GxEAGLView
         glEnableVertexAttribArray(0);
 
         // Create and compile a vertex shader.
-        vertexShader = self.context.createCompiledShader(GLenum(GL_VERTEX_SHADER), error:&error, withSourceStrings:[
+        vertexShader = sender.context.createCompiledShader(GLenum(GL_VERTEX_SHADER), error:&error, withSourceStrings:[
             "attribute vec4 point, color;",
             "uniform mat4 projection;",
             "varying highp vec4 fragColor;",
@@ -188,7 +205,7 @@ class GxColorWheelView : GxEAGLView
         }
 
         // Create and compile a fragment shader.
-        fragmentShader = self.context.createCompiledShader(GLenum(GL_FRAGMENT_SHADER), error:&error, withSourceStrings:[
+        fragmentShader = sender.context.createCompiledShader(GLenum(GL_FRAGMENT_SHADER), error:&error, withSourceStrings:[
             "varying highp vec4 fragColor;",
             "void main(void) {",
             "  gl_FragColor = fragColor;",
@@ -199,7 +216,7 @@ class GxColorWheelView : GxEAGLView
         }
 
         // Create a program linking the two shaders.
-        program = self.context.createLinkedProgramWithShaders([NSNumber(unsignedInt:vertexShader), NSNumber(unsignedInt:fragmentShader)], error:&error)
+        program = sender.context.createLinkedProgramWithShaders([NSNumber(unsignedInt:vertexShader), NSNumber(unsignedInt:fragmentShader)], error:&error)
         if (program == 0) {
           NSLog("program linking failed: \(error)");
         }
@@ -209,7 +226,7 @@ class GxColorWheelView : GxEAGLView
       }
 
 
-      override func deleteState()
+      func deleteStateForOpenGLView(sender: GxEAGLView)
         {
           // Delete our program and shaders
           if program != 0 {
@@ -227,7 +244,7 @@ class GxColorWheelView : GxEAGLView
         }
 
 
-      override func draw()
+      func drawOpenGLView(sender: GxEAGLView)
         {
           glUseProgram(program)
 
