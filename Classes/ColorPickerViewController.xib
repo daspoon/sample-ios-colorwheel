@@ -29,7 +29,7 @@
                     <rect key="frame" x="8" y="60" width="465" height="537"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="kSw-cs-QyD"/>
+                        <action selector="colorWheelSelectionDidChange:" destination="-1" eventType="valueChanged" id="0fs-fe-cR2"/>
                     </connections>
                 </view>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O09-QK-JKN" userLabel="Brightness Slider">

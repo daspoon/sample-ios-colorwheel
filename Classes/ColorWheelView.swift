@@ -32,7 +32,7 @@ func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:
 
 
 @IBDesignable
-class GxColorWheelView : UIView, GxOpenGLViewDelegate
+class GxColorWheelView : UIControl, GxOpenGLViewDelegate
   {
 
     var numberOfSlices: GLuint = 256
@@ -59,9 +59,6 @@ class GxColorWheelView : UIView, GxOpenGLViewDelegate
 
     var pointChanged: Bool = false
     var wheelChanged: Bool = false
-
-
-    @IBOutlet var delegate: AnyObject?
 
 
     override func awakeFromNib()
@@ -159,8 +156,7 @@ class GxColorWheelView : UIView, GxOpenGLViewDelegate
         let y = -(point.y - CGRectGetMidY(r)) / s
         self.selectedPoint = CGPoint(x:x, y:y)
 
-        // Inform the delegate
-        delegate?.colorWheelSelectionDidChange?(self)
+        self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
       }
 
 
@@ -289,28 +285,19 @@ class GxColorWheelView : UIView, GxOpenGLViewDelegate
         }
 
 
-      // UIResponder
+      // UIControl
 
-      override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+      override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool
         {
-          if event.touchesForView(self)?.count == 1 {
-            self.processTouch(touches.anyObject() as UITouch)
-          }
+          self.processTouch(touch)
+          return true
         }
 
 
-      override func touchesMoved(touches: NSSet, withEvent event:UIEvent)
+      override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool
         {
-          if event.touchesForView(self)?.count == 1 {
-            self.processTouch(touches.anyObject() as UITouch)
-          }
+          self.processTouch(touch)
+          return true
         }
 
-  }
-
-
-@objc
-protocol GxColorWheelViewDelegate
-  {
-    func colorWheelSelectionDidChange(sender: GxColorWheelView)
   }
