@@ -14,6 +14,9 @@
 
 @implementation GxEAGLView
 
+@synthesize context;
+
+
 + (Class) layerClass
   { return [CAEAGLLayer class]; }
 

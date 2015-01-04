@@ -28,6 +28,9 @@
     // Initialize a new instance with the given OpenGL context, which must not be nil.
 
 
+@property (nonatomic, readonly) EAGLContext *context;
+
+
 // UIView overrides
 
 - (void) didMoveToWindow;
