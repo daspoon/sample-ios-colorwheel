@@ -72,8 +72,6 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
 
         // Disable interaction in the GL view so we get touch events
         openGLView.userInteractionEnabled = false
-
-        openGLView.backgroundColor = UIColor.whiteColor()
       }
 
 

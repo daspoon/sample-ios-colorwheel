@@ -114,7 +114,7 @@ class GxOpenGLView : UIView
 
         if self.window != nil {
           var layer = self.layer as CAEAGLLayer
-          layer.opaque = true
+          layer.opaque = false
           layer.drawableProperties = [
               kEAGLDrawablePropertyRetainedBacking: false,
               kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8,
