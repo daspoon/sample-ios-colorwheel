@@ -85,7 +85,7 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
 
 
     var projectionRect: CGRect
-      { return GxOuterImageRect(CGRect(x:-1,y:-1,width:2,height:2), GxRectAspectRatio(self.bounds)) }
+      { return CGRect.withIncsribedRect(CGRect(x:-1,y:-1,width:2,height:2), aspectRatio:self.bounds.aspectRatio) }
 
 
     func updateWheelVertexBuffer()
