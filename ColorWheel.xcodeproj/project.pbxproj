@@ -10,13 +10,13 @@
 		552B90E21A5B7D910065BC13 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552B90E01A5B7D910065BC13 /* Application.xib */; };
 		552B90E71A5B92340065BC13 /* CGRect-GxCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B90E61A5B92340065BC13 /* CGRect-GxCore.swift */; };
 		552B90E81A5B923C0065BC13 /* CGRect-GxCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B90E61A5B92340065BC13 /* CGRect-GxCore.swift */; };
+		552B90EB1A5BC1310065BC13 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B90E91A5BC1310065BC13 /* ColorPickerViewController.swift */; };
+		552B90EC1A5BC1310065BC13 /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552B90EA1A5BC1310065BC13 /* ColorPickerViewController.xib */; };
 		5568C7461A5B64A000F8CB2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C7451A5B64A000F8CB2B /* AppDelegate.swift */; };
 		5568C7481A5B64A000F8CB2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5568C7471A5B64A000F8CB2B /* Images.xcassets */; };
 		5568C74B1A5B64A000F8CB2B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568C7491A5B64A000F8CB2B /* MainMenu.xib */; };
 		5568C7671A5B64B700F8CB2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C7661A5B64B700F8CB2B /* AppDelegate.swift */; };
 		5568C76E1A5B64B700F8CB2B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5568C76D1A5B64B700F8CB2B /* Images.xcassets */; };
-		5568C7871A5B666400F8CB2B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C7841A5B666400F8CB2B /* ColorPickerViewController.swift */; };
-		5568C7881A5B666400F8CB2B /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568C7851A5B666400F8CB2B /* ColorPickerViewController.xib */; };
 		5568C7891A5B666400F8CB2B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C7861A5B666400F8CB2B /* TableViewController.swift */; };
 		5568C7991A5B671600F8CB2B /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C78D1A5B671600F8CB2B /* ColorView.swift */; };
 		5568C79A1A5B671600F8CB2B /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C78D1A5B671600F8CB2B /* ColorView.swift */; };
@@ -36,6 +36,8 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		552B90E11A5B7D910065BC13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Application.xib; sourceTree = "<group>"; };
 		552B90E61A5B92340065BC13 /* CGRect-GxCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect-GxCore.swift"; sourceTree = "<group>"; };
+		552B90E91A5BC1310065BC13 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		552B90EA1A5BC1310065BC13 /* ColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
 		5568C7411A5B64A000F8CB2B /* ColorWheel-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ColorWheel-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5568C7441A5B64A000F8CB2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5568C7451A5B64A000F8CB2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,8 +48,6 @@
 		5568C7661A5B64B700F8CB2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5568C76D1A5B64B700F8CB2B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5568C7701A5B64B700F8CB2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5568C7841A5B666400F8CB2B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
-		5568C7851A5B666400F8CB2B /* ColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
 		5568C7861A5B666400F8CB2B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5568C78D1A5B671600F8CB2B /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		5568C78E1A5B671600F8CB2B /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
@@ -119,6 +119,8 @@
 			children = (
 				5568C78D1A5B671600F8CB2B /* ColorView.swift */,
 				5568C78E1A5B671600F8CB2B /* ColorWheel.swift */,
+				552B90E91A5BC1310065BC13 /* ColorPickerViewController.swift */,
+				552B90EA1A5BC1310065BC13 /* ColorPickerViewController.xib */,
 				5568C7931A5B671600F8CB2B /* OpenGLView.swift */,
 			);
 			name = Classes;
@@ -167,8 +169,6 @@
 				552B90E01A5B7D910065BC13 /* Application.xib */,
 				5568C7661A5B64B700F8CB2B /* AppDelegate.swift */,
 				5568C7A71A5B684B00F8CB2B /* Bridging-Header.h */,
-				5568C7841A5B666400F8CB2B /* ColorPickerViewController.swift */,
-				5568C7851A5B666400F8CB2B /* ColorPickerViewController.xib */,
 				5568C7861A5B666400F8CB2B /* TableViewController.swift */,
 				5568C76D1A5B64B700F8CB2B /* Images.xcassets */,
 				5568C76F1A5B64B700F8CB2B /* LaunchScreen.xib */,
@@ -282,7 +282,7 @@
 			files = (
 				5568C7DF1A5B727D00F8CB2B /* LaunchScreen.xib in Resources */,
 				552B90E21A5B7D910065BC13 /* Application.xib in Resources */,
-				5568C7881A5B666400F8CB2B /* ColorPickerViewController.xib in Resources */,
+				552B90EC1A5BC1310065BC13 /* ColorPickerViewController.xib in Resources */,
 				5568C76E1A5B64B700F8CB2B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,8 +310,8 @@
 			files = (
 				5568C79A1A5B671600F8CB2B /* ColorView.swift in Sources */,
 				5568C7A61A5B671600F8CB2B /* UIColor-GxCoreUI.swift in Sources */,
+				552B90EB1A5BC1310065BC13 /* ColorPickerViewController.swift in Sources */,
 				5568C7A41A5B671600F8CB2B /* OpenGLView.swift in Sources */,
-				5568C7871A5B666400F8CB2B /* ColorPickerViewController.swift in Sources */,
 				552B90E71A5B92340065BC13 /* CGRect-GxCore.swift in Sources */,
 				5568C7891A5B666400F8CB2B /* TableViewController.swift in Sources */,
 				5568C79C1A5B671600F8CB2B /* ColorWheel.swift in Sources */,
