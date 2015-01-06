@@ -25,12 +25,6 @@ class GxColorPickerViewController : UIViewController
       }
 
 
-    class func keyPathsForValuesAffectingSelectedColor() -> NSSet
-      {
-        return NSSet(array:["point", "brightness", "alpha"])
-      }
-
-
     var selectedColor: UIColor
       {
         get {
@@ -75,14 +69,20 @@ class GxColorPickerViewController : UIViewController
 
     @IBAction func colorWheelSelectionDidChange(sender: GxColorWheel)
       {
+        self.willChangeValueForKey("selectedColor")
         self.point = sender.selectedPoint
+        self.didChangeValueForKey("selectedColor")
+
         self.selectedColorDidChange()
       }
 
 
     @IBAction func sliderDidChange(sender: UISlider)
       {
+        self.willChangeValueForKey("selectedColor")
         self.brightness = CGFloat(sender.value)
+        self.didChangeValueForKey("selectedColor")
+
         self.selectedColorDidChange()
       }
 
