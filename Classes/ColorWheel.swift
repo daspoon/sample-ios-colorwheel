@@ -35,7 +35,7 @@ func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:
 class GxColorWheel : UIControl, GxOpenGLViewDelegate
   {
 
-    var numberOfSlices: GLuint = 256
+    @IBInspectable var numberOfSlices: UInt = 256
       { didSet { wheelChanged=true; openGLView?.setNeedsDisplay()} }
 
     var selectedPoint: CGPoint = CGPoint(x:0.5, y:0.5)
@@ -80,7 +80,7 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
         var x:GLfloat=0, y:GLfloat=0, r:GLfloat=0, g:GLfloat=0, b:GLfloat=0, a:GLfloat=0
       }
 
-    var numberOfVertices: GLuint
+    var numberOfVertices: UInt
       { return numberOfSlices + 2 }
 
 
