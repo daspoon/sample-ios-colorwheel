@@ -62,7 +62,7 @@ class GxOpenGLView : UIView
         glBindFramebufferOES(GLenum(GL_FRAMEBUFFER_OES), frameBuffer)
         glBindRenderbufferOES(GLenum(GL_RENDERBUFFER_OES), renderBuffer)
 
-        context!.renderbufferStorage(Int(GL_RENDERBUFFER_OES), fromDrawable:(self.layer as CAEAGLLayer))
+        context!.renderbufferStorage(Int(GL_RENDERBUFFER_OES), fromDrawable:(self.layer as! CAEAGLLayer))
 
         glFramebufferRenderbufferOES(GLenum(GL_FRAMEBUFFER_OES), GLenum(GL_COLOR_ATTACHMENT0_OES), GLenum(GL_RENDERBUFFER_OES), renderBuffer);
         if glCheckFramebufferStatusOES(GLenum(GL_FRAMEBUFFER_OES)) != GLenum(GL_FRAMEBUFFER_COMPLETE_OES) {
@@ -113,7 +113,7 @@ class GxOpenGLView : UIView
         EAGLContext.setCurrentContext(context!)
 
         if self.window != nil {
-          var layer = self.layer as CAEAGLLayer
+          var layer = self.layer as! CAEAGLLayer
           layer.opaque = false
           layer.drawableProperties = [
               kEAGLDrawablePropertyRetainedBacking: false,

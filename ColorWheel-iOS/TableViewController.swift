@@ -17,7 +17,7 @@ class ColorWheelTableViewController : UITableViewController, UITableViewDataSour
     var selectedRow: NSInteger = 0
 
 
-    override convenience init()
+    convenience init()
       {
         self.init(style: UITableViewStyle.Plain)
 
@@ -86,7 +86,7 @@ class ColorWheelTableViewController : UITableViewController, UITableViewDataSour
           cell!.backgroundView = GxColorView()
         }
 
-        (cell!.backgroundView as GxColorView).fillColor = colors[path.row] as UIColor
+        (cell!.backgroundView as! GxColorView).fillColor = colors[path.row] as UIColor
 
         return cell!
       }

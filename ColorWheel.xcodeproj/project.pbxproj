@@ -117,10 +117,10 @@
 		552B90E31A5B8FAB0065BC13 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5568C78D1A5B671600F8CB2B /* ColorView.swift */,
-				5568C78E1A5B671600F8CB2B /* ColorWheel.swift */,
 				552B90E91A5BC1310065BC13 /* ColorPickerViewController.swift */,
 				552B90EA1A5BC1310065BC13 /* ColorPickerViewController.xib */,
+				5568C78D1A5B671600F8CB2B /* ColorView.swift */,
+				5568C78E1A5B671600F8CB2B /* ColorWheel.swift */,
 				5568C7931A5B671600F8CB2B /* OpenGLView.swift */,
 			);
 			name = Classes;
