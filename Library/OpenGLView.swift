@@ -113,7 +113,7 @@ class GxOpenGLView : UIView
         EAGLContext.setCurrentContext(context!)
 
         if self.window != nil {
-          var layer = self.layer as! CAEAGLLayer
+          let layer = self.layer as! CAEAGLLayer
           layer.opaque = false
           layer.drawableProperties = [
               kEAGLDrawablePropertyRetainedBacking: false,

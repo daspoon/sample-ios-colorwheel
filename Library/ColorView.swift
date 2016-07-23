@@ -21,7 +21,7 @@ class GxColorView : UIView
     override func drawRect(dirtyRect: CGRect)
       {
         let bounds = self.bounds
-        var context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()
 
         if let color = fillColor {
           color.setFill()

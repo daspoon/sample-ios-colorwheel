@@ -64,7 +64,7 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
     override func awakeFromNib()
       {
         openGLView = GxOpenGLView(frame:self.bounds, context:GxOpenGLView.createOpenGLContext())
-        openGLView.autoresizingMask = UIViewAutoresizing.FlexibleWidth|UIViewAutoresizing.FlexibleHeight
+        openGLView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.addSubview(openGLView)
 
         // We emit the content-specific GL code
@@ -103,7 +103,7 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
 
         let delta_hue = 1.0 / CGFloat(numberOfSlices)
         let delta_phi = (2 * CGFloat(M_PI)) / CGFloat(numberOfSlices)
-        for var j = 0; j <= Int(numberOfSlices); ++j {
+        for j in 0 ..< Int(numberOfSlices+1) {
           let d = CGFloat(j) * delta_phi
           let c = UIColor(hue:(CGFloat(j) * delta_hue), saturation:1, brightness:brightness, alpha:1)
           var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0
@@ -177,7 +177,7 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
 
         // Create and update the element buffer for the selected point as an outline
         glGenBuffers(1, &pointIndexBuffer)
-        var indices: [GLubyte] = [0, 1, 3, 2]
+        let indices: [GLubyte] = [0, 1, 3, 2]
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), pointIndexBuffer)
         glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), 4*sizeof(GLubyte), indices, GLenum(GL_STATIC_DRAW))
 
@@ -245,7 +245,7 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
           // Upload the projection matrix
           let rect = self.projectionRect
           var P = Array(count:16, repeatedValue:GLfloat(0))
-          ortho(&P, GLfloat(CGRectGetMinX(rect)), GLfloat(CGRectGetMaxX(rect)), GLfloat(CGRectGetMinY(rect)), GLfloat(CGRectGetMaxY(rect)), -1, 1)
+          ortho(&P, left: GLfloat(CGRectGetMinX(rect)), right: GLfloat(CGRectGetMaxX(rect)), bottom: GLfloat(CGRectGetMinY(rect)), top: GLfloat(CGRectGetMaxY(rect)), near: -1, far: 1)
           glUniformMatrix4fv(projectionLoc, 1, 0, P)
 
           // Draw the color wheel interior as a triangle fan (with per-vertex colors)...
@@ -285,14 +285,14 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
 
       // UIControl
 
-      override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool
+      override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool
         {
           self.processTouch(touch)
           return true
         }
 
 
-      override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool
+      override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool
         {
           self.processTouch(touch)
           return true

@@ -18,7 +18,7 @@ class ColorWheelAppDelegate : UIResponder, UIApplicationDelegate
 
     func application(sender: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
       {
-        var navigationController = UINavigationController(rootViewController: ColorWheelTableViewController())
+        let navigationController = UINavigationController(rootViewController: ColorWheelTableViewController())
         navigationController.navigationBar.translucent = false
         
         window?.rootViewController = navigationController

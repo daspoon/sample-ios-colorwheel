@@ -19,9 +19,15 @@ class GxColorPickerViewController : UIViewController
     var alpha: CGFloat = 1
 
 
-    override convenience init()
+    init()
       {
-        self.init(nibName:"ColorPickerViewController", bundle:nil)
+        super.init(nibName:"ColorPickerViewController", bundle:nil)
+      }
+
+
+    required init?(coder: NSCoder)
+      {
+        super.init(coder:coder)
       }
 
 
@@ -56,7 +62,7 @@ class GxColorPickerViewController : UIViewController
 
     func selectedColorDidChange()
       {
-        var v = self.view
+        let _ = self.view
 
         wheelView.selectedPoint = point
         wheelView.brightness = brightness

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ColorWheelTableViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate
+class ColorWheelTableViewController : UITableViewController
   {
 
     var colorPickerViewController: GxColorPickerViewController?
@@ -24,7 +24,7 @@ class ColorWheelTableViewController : UITableViewController, UITableViewDataSour
         colors = [ UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor() ]
 
         colorPickerViewController = GxColorPickerViewController()
-        colorPickerViewController!.addObserver(self, forKeyPath:"selectedColor", options:NSKeyValueObservingOptions.allZeros, context:nil)
+        colorPickerViewController!.addObserver(self, forKeyPath:"selectedColor", options:NSKeyValueObservingOptions(), context:nil)
 
         self.title = "Colors"
       }
@@ -48,7 +48,7 @@ class ColorWheelTableViewController : UITableViewController, UITableViewDataSour
 
     // NSKeyValueObserving
 
-    override func observeValueForKeyPath(path: String, ofObject sender: AnyObject, change: [NSObject:AnyObject], context:UnsafeMutablePointer<Void>)
+    override func observeValueForKeyPath(path: String?, ofObject sender: AnyObject?, change: [String:AnyObject]?, context:UnsafeMutablePointer<Void>)
       {
         // Update the corresponding list element
         colors[selectedRow] = colorPickerViewController!.selectedColor
@@ -66,7 +66,7 @@ class ColorWheelTableViewController : UITableViewController, UITableViewDataSour
 
         self.edgesForExtendedLayout = UIRectEdge.None
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.Add, target:self, action:"add:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.Add, target:self, action:#selector(ColorWheelTableViewController.add(_:)))
       }
 
 
@@ -80,7 +80,7 @@ class ColorWheelTableViewController : UITableViewController, UITableViewDataSour
 
     override func tableView(sender: UITableView, cellForRowAtIndexPath path: NSIndexPath) -> UITableViewCell
       {
-        var cell = sender.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell
+        var cell = sender.dequeueReusableCellWithIdentifier("cell")
         if cell == nil {
           cell = UITableViewCell(style:UITableViewCellStyle.Default, reuseIdentifier:"cell")
           cell!.backgroundView = GxColorView()
