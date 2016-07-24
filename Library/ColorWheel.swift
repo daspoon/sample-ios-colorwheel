@@ -1,6 +1,9 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
+
+  A subclass of UIControl implementing a color wheel which emits value-changed actions 
+  in response to touch/dragging events.
 
 */
 

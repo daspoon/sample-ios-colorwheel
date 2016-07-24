@@ -1,6 +1,6 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
 
   A UITableViewController subclass to present a list of colors for inspection by ColorPickerViewController.
 

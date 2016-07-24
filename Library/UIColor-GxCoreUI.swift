@@ -1,16 +1,18 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
+
+  Utility method added to UIColor.
 
 */
 
 import UIKit
 
 
-extension UIColor
+public extension UIColor
   {
 
-    func getGLRed(inout r:GLfloat, inout green g:GLfloat, inout blue b:GLfloat, inout alpha a:GLfloat)
+    public func getGLRed(inout r:GLfloat, inout green g:GLfloat, inout blue b:GLfloat, inout alpha a:GLfloat)
       {
         var r2:CGFloat=0, g2:CGFloat=0, b2:CGFloat=0, a2:CGFloat=0
         self.getRed(&r2, green:&g2, blue:&b2, alpha:&a2)

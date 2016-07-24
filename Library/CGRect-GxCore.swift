@@ -1,20 +1,22 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
+
+  Utility methods added to CGRect.
 
 */
 
 import CoreGraphics
 
 
-extension CGRect
+public extension CGRect
   {
 
-    var aspectRatio: CGFloat
+    public var aspectRatio: CGFloat
       { return CGRectGetWidth(self)/CGRectGetHeight(self); }
 
 
-    static func withReferenceRect(rect: CGRect, aspectRatio: CGFloat, shrink: Bool) -> CGRect
+    private static func withReferenceRect(rect: CGRect, aspectRatio: CGFloat, shrink: Bool) -> CGRect
       {
         assert(aspectRatio > 0, "invalid argument")
 
@@ -31,16 +33,18 @@ extension CGRect
       }
 
 
-    static func withEnclosingRect(rect: CGRect, aspectRatio ratio: CGFloat) -> CGRect
+    public static func withEnclosingRect(rect: CGRect, aspectRatio ratio: CGFloat) -> CGRect
       {
-        // The largest centered sub-rectangle of the given rectangle which has the specified aspect ratio (viz. width/height).  This function is useful for sizing an image to fit a given view frame.
+        // Return the receiver's largest centered sub-rectangle having the specified aspect ratio (viz. width/height).  This function is useful for sizing an image to fit a given view frame.
+
         return self.withReferenceRect(rect, aspectRatio:ratio, shrink:true)
       }
 
 
-    static func withIncsribedRect(rect: CGRect, aspectRatio ratio: CGFloat) -> CGRect
+    public static func withIncsribedRect(rect: CGRect, aspectRatio ratio: CGFloat) -> CGRect
       {
-        // The smallest rectangle enclosing the given rectangle and having the given aspect ratio (viz. width/height).  This function is useful for choosing a view frame size for a given image.
+        // The smallest rectangle enclosing the receiver and having the given aspect ratio (viz. width/height).  This function is useful for choosing a view frame size for a given image.
+
         return self.withReferenceRect(rect, aspectRatio:ratio, shrink:false)
       }
 

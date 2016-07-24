@@ -1,6 +1,9 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
+
+  A subclass of UIView which enables drawing content with OpenGL. The OpenGLViewDelegate protocol
+  enables a delegate to manage graphic state and perform drawing.
 
 */
 
@@ -9,9 +12,18 @@ import UIKit
 
 protocol OpenGLViewDelegate
   {
+
     func createStateForOpenGLView(sender: OpenGLView)
+      // This method is invoked when the sending view becomes associated with a window.
+      // It can be used to allocate graphics state.
+
     func deleteStateForOpenGLView(sender: OpenGLView)
+      // This method is invoked when the sending view is disassociated with its window.
+      // It can be used to deallocate graphics state.
+
     func drawOpenGLView(sender: OpenGLView)
+      // This method is invoked whenever the view needs to be redrawn.
+
   }
 
 
@@ -106,7 +118,7 @@ class OpenGLView : UIView
       }
 
 
-    // UIView
+    // MARK: - UIView
 
     override func didMoveToWindow()
       {

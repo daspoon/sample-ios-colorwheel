@@ -1,6 +1,6 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
 
   A UIView subclass which draws a given color within its bounds.
 

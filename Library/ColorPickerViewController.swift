@@ -1,6 +1,8 @@
 /*
 
-  Created by David Spooner
+  Copyright © 2010-2016 David Spooner; see License.txt
+
+  A subclass of UIViewController which enableds editing a UIColor within a color wheel view.
 
 */
 

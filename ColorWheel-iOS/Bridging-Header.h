@@ -1,7 +1,6 @@
 /*
 
-  Created by David Spooner on 12/31/14.
-  Copyright (c) 2014 Lambda Software Corporation. All rights reserved.
+  Copyright © 2010-2016 David Spooner; see License.txt
 
 */
 

@@ -21,6 +21,7 @@
 		5568C7A61A5B671600F8CB2B /* UIColor-GxCoreUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568C7941A5B671600F8CB2B /* UIColor-GxCoreUI.swift */; };
 		5568C7DF1A5B727D00F8CB2B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568C76F1A5B64B700F8CB2B /* LaunchScreen.xib */; };
 		557AE54F1D4520C4006C41EE /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557AE54E1D4520C4006C41EE /* utilities.swift */; };
+		557AE5531D452D6D006C41EE /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 557AE5521D452D6D006C41EE /* License.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5568C7941A5B671600F8CB2B /* UIColor-GxCoreUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-GxCoreUI.swift"; sourceTree = "<group>"; };
 		5568C7A71A5B684B00F8CB2B /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		557AE54E1D4520C4006C41EE /* utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
+		557AE5521D452D6D006C41EE /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
 		5593DF1F1188F9D100FCEF91 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5593DF251188F9DD00FCEF91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5593DF2B1188F9ED00FCEF91 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				55C6B2E811989926008DACC0 /* ReadMe.rtf */,
+				557AE5521D452D6D006C41EE /* License.txt */,
 				5568C78A1A5B671600F8CB2B /* Library */,
 				5568C7631A5B64B700F8CB2B /* ColorWheel-iOS */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5568C7DF1A5B727D00F8CB2B /* LaunchScreen.xib in Resources */,
+				557AE5531D452D6D006C41EE /* License.txt in Resources */,
 				552B90E21A5B7D910065BC13 /* Application.xib in Resources */,
 				552B90EC1A5BC1310065BC13 /* ColorPickerViewController.xib in Resources */,
 				5568C76E1A5B64B700F8CB2B /* Images.xcassets in Resources */,
