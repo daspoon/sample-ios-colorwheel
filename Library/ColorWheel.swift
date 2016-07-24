@@ -7,30 +7,6 @@
 import UIKit
 
 
-let null = UnsafePointer<Void>(bitPattern:0);
-
-
-func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:GLfloat, near:GLfloat, far:GLfloat)
-  {
-    P[0*4+0] = 2 / (right - left);
-    P[1*4+0] = 0;
-    P[2*4+0] = 0;
-    P[3*4+0] = -(right + left) / (right - left);
-    P[0*4+1] = 0;
-    P[1*4+1] = 2 / (top - bottom);
-    P[2*4+1] = 0;
-    P[3*4+1] = -(top + bottom) / (top - bottom);
-    P[0*4+2] = 0;
-    P[1*4+2] = 0;
-    P[2*4+2] = -2 / (far - near);
-    P[3*4+2] = -(far + near) / (far - near);
-    P[0*4+3] = 0;
-    P[1*4+3] = 0;
-    P[2*4+3] = 0;
-    P[3*4+3] = 1;
-  }
-
-
 @IBDesignable
 class GxColorWheel : UIControl, GxOpenGLViewDelegate
   {
@@ -240,6 +216,8 @@ class GxColorWheel : UIControl, GxOpenGLViewDelegate
 
       func drawOpenGLView(sender: GxOpenGLView)
         {
+          let null = UnsafePointer<Void>(bitPattern:0);
+
           glUseProgram(program)
 
           // Upload the projection matrix
