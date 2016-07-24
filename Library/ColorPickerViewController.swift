@@ -7,11 +7,11 @@
 import UIKit
 
 
-class GxColorPickerViewController : UIViewController
+class ColorPickerViewController : UIViewController
   {
 
-    @IBOutlet var colorView: GxColorView!
-    @IBOutlet var wheelView: GxColorWheel!
+    @IBOutlet var colorView: ColorView!
+    @IBOutlet var wheelView: ColorWheel!
     @IBOutlet var sliderView: UISlider!
 
     var point: CGPoint = CGPoint(x:0, y:0)
@@ -73,7 +73,7 @@ class GxColorPickerViewController : UIViewController
       }
 
 
-    @IBAction func colorWheelSelectionDidChange(sender: GxColorWheel)
+    @IBAction func colorWheelSelectionDidChange(sender: ColorWheel)
       {
         self.willChangeValueForKey("selectedColor")
         self.point = sender.selectedPoint

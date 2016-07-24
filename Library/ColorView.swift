@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-class GxColorView : UIView
+class ColorView : UIView
   {
 
     var fillColor: UIColor? { didSet { setNeedsDisplay() } }

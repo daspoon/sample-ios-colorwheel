@@ -2,7 +2,7 @@
 
   Created by David Spooner
 
-  A UITableViewController subclass to present a list of colors for inspection by GxColorPickerViewController.
+  A UITableViewController subclass to present a list of colors for inspection by ColorPickerViewController.
 
 */
 
@@ -12,7 +12,7 @@ import UIKit
 class ColorWheelTableViewController : UITableViewController
   {
 
-    var colorPickerViewController: GxColorPickerViewController?
+    var colorPickerViewController: ColorPickerViewController?
     var colors: [UIColor] = []
     var selectedRow: NSInteger = 0
 
@@ -23,7 +23,7 @@ class ColorWheelTableViewController : UITableViewController
 
         colors = [ UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor() ]
 
-        colorPickerViewController = GxColorPickerViewController()
+        colorPickerViewController = ColorPickerViewController()
         colorPickerViewController!.addObserver(self, forKeyPath:"selectedColor", options:NSKeyValueObservingOptions(), context:nil)
 
         self.title = "Colors"
@@ -83,10 +83,10 @@ class ColorWheelTableViewController : UITableViewController
         var cell = sender.dequeueReusableCellWithIdentifier("cell")
         if cell == nil {
           cell = UITableViewCell(style:UITableViewCellStyle.Default, reuseIdentifier:"cell")
-          cell!.backgroundView = GxColorView()
+          cell!.backgroundView = ColorView()
         }
 
-        (cell!.backgroundView as! GxColorView).fillColor = colors[path.row] as UIColor
+        (cell!.backgroundView as! ColorView).fillColor = colors[path.row] as UIColor
 
         return cell!
       }

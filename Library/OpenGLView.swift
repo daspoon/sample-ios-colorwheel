@@ -7,16 +7,16 @@
 import UIKit
 
 
-protocol GxOpenGLViewDelegate
+protocol OpenGLViewDelegate
   {
-    func createStateForOpenGLView(sender: GxOpenGLView)
-    func deleteStateForOpenGLView(sender: GxOpenGLView)
-    func drawOpenGLView(sender: GxOpenGLView)
+    func createStateForOpenGLView(sender: OpenGLView)
+    func deleteStateForOpenGLView(sender: OpenGLView)
+    func drawOpenGLView(sender: OpenGLView)
   }
 
 
 @IBDesignable
-class GxOpenGLView : UIView
+class OpenGLView : UIView
   {
 
     var context: EAGLContext!
@@ -26,7 +26,7 @@ class GxOpenGLView : UIView
     var backingWidth: GLint = 0
     var backingHeight: GLint = 0
 
-    var delegate: GxOpenGLViewDelegate!
+    var delegate: OpenGLViewDelegate!
 
 
     override class func layerClass() -> AnyClass
