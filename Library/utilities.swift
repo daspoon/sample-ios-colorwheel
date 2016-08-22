@@ -9,10 +9,10 @@
 import UIKit
 
 
-// Create a 4x4 orthographic projection matrix with the given parameters.
-
 func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:GLfloat, near:GLfloat, far:GLfloat)
   {
+    // Create a 4x4 orthographic projection matrix with the given parameters.
+
     P[0*4+0] = 2 / (right - left);
     P[1*4+0] = 0;
     P[2*4+0] = 0;

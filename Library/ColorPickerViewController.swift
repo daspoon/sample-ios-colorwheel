@@ -12,13 +12,19 @@ import UIKit
 class ColorPickerViewController : UIViewController
   {
 
+    dynamic var point: CGPoint = CGPoint(x:0, y:0)
+      // A point within the unit circle defining the hue and saturation of the selected color.
+
+    dynamic var brightness: CGFloat = 0
+      // A value in [0..1] defining the selected color's brightness.
+
+    dynamic var alpha: CGFloat = 1
+      // The selected color's transparency.
+
+
     @IBOutlet var colorView: ColorView!
     @IBOutlet var wheelView: ColorWheel!
     @IBOutlet var sliderView: UISlider!
-
-    var point: CGPoint = CGPoint(x:0, y:0)
-    var brightness: CGFloat = 0
-    var alpha: CGFloat = 1
 
 
     init()
@@ -27,11 +33,8 @@ class ColorPickerViewController : UIViewController
       }
 
 
-    required init?(coder: NSCoder)
-      {
-        super.init(coder:coder)
-      }
-
+    class func keyPathsForValuesAffectingSelectedColor() -> Set<String>
+      { return ["point", "brightness", "alpha"] }
 
     var selectedColor: UIColor
       {
@@ -55,16 +58,16 @@ class ColorPickerViewController : UIViewController
           }
           brightness = v
 
-          if self.isViewLoaded() {
-            self.selectedColorDidChange()
-          }
+          selectedColorDidChange()
         }
       }
 
 
     func selectedColorDidChange()
       {
-        let _ = self.view
+        // Invoked whenever our selected color changes. Update the UI if loaded.
+
+        guard isViewLoaded() else { return }
 
         wheelView.selectedPoint = point
         wheelView.brightness = brightness
@@ -77,21 +80,31 @@ class ColorPickerViewController : UIViewController
 
     @IBAction func colorWheelSelectionDidChange(sender: ColorWheel)
       {
-        self.willChangeValueForKey("selectedColor")
-        self.point = sender.selectedPoint
-        self.didChangeValueForKey("selectedColor")
+        // Invoked in response to changing the selected point within the color wheel view.
 
-        self.selectedColorDidChange()
+        point = sender.selectedPoint
+
+        selectedColorDidChange()
       }
 
 
     @IBAction func sliderDidChange(sender: UISlider)
       {
-        self.willChangeValueForKey("selectedColor")
-        self.brightness = CGFloat(sender.value)
-        self.didChangeValueForKey("selectedColor")
+        // Invoked in response to changing the value of the brightness slider.
 
-        self.selectedColorDidChange()
+        brightness = CGFloat(sender.value)
+
+        selectedColorDidChange()
+      }
+
+
+    @IBAction func alphaSliderDidChange(sender: UISlider)
+      {
+        // Invoked in response to change the value of the alpha slider.
+
+        alpha = CGFloat(sender.value)
+
+        selectedColorDidChange()
       }
 
 
@@ -103,7 +116,16 @@ class ColorPickerViewController : UIViewController
 
         super.viewDidLoad()
 
-        self.selectedColorDidChange()
+        // Update the UI to reflect the current color selection.
+        selectedColorDidChange()
+      }
+
+
+    // MARK: - NSCoder
+
+    required init?(coder: NSCoder)
+      {
+        super.init(coder:coder)
       }
 
   }
