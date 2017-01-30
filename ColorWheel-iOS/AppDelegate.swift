@@ -16,13 +16,13 @@ class ColorWheelAppDelegate : UIResponder, UIApplicationDelegate
     @IBOutlet var window: UIWindow?
 
 
-    func application(sender: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    func application(_ sender: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
       {
         let navigationController = UINavigationController(rootViewController: ColorWheelTableViewController())
-        navigationController.navigationBar.translucent = false
+        navigationController.navigationBar.isTranslucent = false
         
         window?.rootViewController = navigationController
-        window?.makeKeyWindow()
+        window?.makeKey()
 
         return true
       }

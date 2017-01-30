@@ -13,15 +13,15 @@ import UIKit
 protocol OpenGLViewDelegate
   {
 
-    func createStateForOpenGLView(sender: OpenGLView)
+    func createStateForOpenGLView(_ sender: OpenGLView)
       // This method is invoked when the sending view becomes associated with a window.
       // It can be used to allocate graphics state.
 
-    func deleteStateForOpenGLView(sender: OpenGLView)
+    func deleteStateForOpenGLView(_ sender: OpenGLView)
       // This method is invoked when the sending view is disassociated with its window.
       // It can be used to deallocate graphics state.
 
-    func drawOpenGLView(sender: OpenGLView)
+    func drawOpenGLView(_ sender: OpenGLView)
       // This method is invoked whenever the view needs to be redrawn.
 
   }
@@ -41,12 +41,12 @@ class OpenGLView : UIView
     var delegate: OpenGLViewDelegate!
 
 
-    override class func layerClass() -> AnyClass
+    override class var layerClass : AnyClass
       { return CAEAGLLayer.self }
 
 
     class func createOpenGLContext() -> EAGLContext
-      { return EAGLContext(API:EAGLRenderingAPI.OpenGLES2) }
+      { return EAGLContext(api:EAGLRenderingAPI.openGLES2) }
 
 
     convenience init(frame: CGRect, context: EAGLContext)
@@ -60,21 +60,21 @@ class OpenGLView : UIView
     override func awakeFromNib()
       {
         if context == nil {
-          context = self.dynamicType.createOpenGLContext()
+          context = type(of: self).createOpenGLContext()
         }
       }
 
 
     func createFramebuffer()
       {
-        assert(EAGLContext.currentContext() == context!, "unexpected state")
+        assert(EAGLContext.current() == context!, "unexpected state")
 
         glGenFramebuffersOES(1, &frameBuffer)
         glGenRenderbuffersOES(1, &renderBuffer)
         glBindFramebufferOES(GLenum(GL_FRAMEBUFFER_OES), frameBuffer)
         glBindRenderbufferOES(GLenum(GL_RENDERBUFFER_OES), renderBuffer)
 
-        context!.renderbufferStorage(Int(GL_RENDERBUFFER_OES), fromDrawable:(self.layer as! CAEAGLLayer))
+        context!.renderbufferStorage(Int(GL_RENDERBUFFER_OES), from:(self.layer as! CAEAGLLayer))
 
         glFramebufferRenderbufferOES(GLenum(GL_FRAMEBUFFER_OES), GLenum(GL_COLOR_ATTACHMENT0_OES), GLenum(GL_RENDERBUFFER_OES), renderBuffer);
         if glCheckFramebufferStatusOES(GLenum(GL_FRAMEBUFFER_OES)) != GLenum(GL_FRAMEBUFFER_COMPLETE_OES) {
@@ -88,7 +88,7 @@ class OpenGLView : UIView
 
     func deleteFramebuffer()
       {
-        assert(EAGLContext.currentContext() == context!, "unexpected state")
+        assert(EAGLContext.current() == context!, "unexpected state")
 
         glDeleteFramebuffersOES(1, &frameBuffer)
         glDeleteRenderbuffersOES(1, &renderBuffer)
@@ -122,11 +122,11 @@ class OpenGLView : UIView
 
     override func didMoveToWindow()
       {
-        EAGLContext.setCurrentContext(context!)
+        EAGLContext.setCurrent(context!)
 
         if self.window != nil {
           let layer = self.layer as! CAEAGLLayer
-          layer.opaque = false
+          layer.isOpaque = false
           layer.drawableProperties = [
               kEAGLDrawablePropertyRetainedBacking: false,
               kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8,
@@ -144,14 +144,14 @@ class OpenGLView : UIView
 
     override func layoutSubviews()
       {
-        EAGLContext.setCurrentContext(context!)
+        EAGLContext.setCurrent(context!)
 
         // Set the viewport according to the dimensions of the renderbuffer
         glViewport(0, 0, backingWidth, backingHeight)
 
         // Set the clear color (transparent black if backgroundColor == nil)
         var r:GLfloat=0, g:GLfloat=0, b:GLfloat=0, a:GLfloat=0
-        self.backgroundColor?.getGLRed(&r, green:&g, blue:&b, alpha:&a)
+        self.backgroundColor?.getGL(red:&r, green:&g, blue:&b, alpha:&a)
         glClearColor(r, g, b, a)
 
         // Clear the buffers

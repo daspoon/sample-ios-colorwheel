@@ -18,20 +18,20 @@ class ColorView : UIView
     var borderWidth: CGFloat = 1  { didSet { setNeedsDisplay() } }
 
 
-    override func drawRect(dirtyRect: CGRect)
+    override func draw(_ dirtyRect: CGRect)
       {
         let bounds = self.bounds
         let context = UIGraphicsGetCurrentContext()
 
         if let color = fillColor {
           color.setFill()
-          CGContextFillRect(context, bounds)
+          context?.fill(bounds)
         }
 
         if let color = borderColor {
           color.setStroke()
-          CGContextSetLineWidth(context, borderWidth)
-          CGContextStrokeRect(context, bounds)
+          context?.setLineWidth(borderWidth)
+          context?.stroke(bounds)
         }
       }
 

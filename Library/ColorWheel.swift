@@ -43,14 +43,14 @@ class ColorWheel : UIControl, OpenGLViewDelegate
     override func awakeFromNib()
       {
         openGLView = OpenGLView(frame:self.bounds, context:OpenGLView.createOpenGLContext())
-        openGLView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        openGLView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.addSubview(openGLView)
 
         // We emit the content-specific GL code
         openGLView.delegate = self
 
         // Disable interaction in the GL view so we get touch events
-        openGLView.userInteractionEnabled = false
+        openGLView.isUserInteractionEnabled = false
       }
 
 
@@ -73,7 +73,7 @@ class ColorWheel : UIControl, OpenGLViewDelegate
         // of the circle and is white; the remaining (n_slices + 1) vertices loop around the edge of the
         // circle, with the last edge point a duplicate of the first edge point...
 
-        var vertices = Array(count:Int(numberOfVertices), repeatedValue:Vertex())
+        var vertices = Array(repeating: Vertex(), count: Int(numberOfVertices))
 
         vertices[0].r = 1
         vertices[0].g = 1
@@ -95,7 +95,7 @@ class ColorWheel : UIControl, OpenGLViewDelegate
           vertices[j+1].a = 1
         }
 
-        glBufferData(GLenum(GL_ARRAY_BUFFER), vertices.count * sizeof(Vertex), &vertices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ARRAY_BUFFER), vertices.count * MemoryLayout<Vertex>.size, &vertices, GLenum(GL_STATIC_DRAW))
 
         wheelChanged = false
       }
@@ -116,30 +116,30 @@ class ColorWheel : UIControl, OpenGLViewDelegate
             x + d, y + d,
           ]
 
-        glBufferData(GLenum(GL_ARRAY_BUFFER), vertices.count*sizeof(GLfloat), &vertices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ARRAY_BUFFER), vertices.count*MemoryLayout<GLfloat>.size, &vertices, GLenum(GL_STATIC_DRAW))
       }
 
 
     // Actions
 
-    func processTouch(sender: UITouch)
+    func processTouch(_ sender: UITouch)
       {
-        let point = sender.locationInView(self)
+        let point = sender.location(in: self)
 
         // Convert the point from view coordinates to 'world' coordinates and update our selected point
         let r = self.bounds
-        let s = fmin(CGRectGetWidth(r), CGRectGetHeight(r)) * 0.5
-        let x =  (point.x - CGRectGetMidX(r)) / s
-        let y = -(point.y - CGRectGetMidY(r)) / s
+        let s = fmin(r.width, r.height) * 0.5
+        let x =  (point.x - r.midX) / s
+        let y = -(point.y - r.midY) / s
         self.selectedPoint = CGPoint(x:x, y:y)
 
-        self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
+        self.sendActions(for: UIControlEvents.valueChanged)
       }
 
 
     // OpenGLViewDelegate
 
-    func createStateForOpenGLView(sender: OpenGLView)
+    func createStateForOpenGLView(_ sender: OpenGLView)
       {
         var error: NSString?
 
@@ -158,7 +158,7 @@ class ColorWheel : UIControl, OpenGLViewDelegate
         glGenBuffers(1, &pointIndexBuffer)
         let indices: [GLubyte] = [0, 1, 3, 2]
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), pointIndexBuffer)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), 4*sizeof(GLubyte), indices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), 4*MemoryLayout<GLubyte>.size, indices, GLenum(GL_STATIC_DRAW))
 
         // Enable vertex arrays
         glEnableVertexAttribArray(0);
@@ -189,7 +189,7 @@ class ColorWheel : UIControl, OpenGLViewDelegate
         }
 
         // Create a program linking the two shaders.
-        program = sender.context.createLinkedProgramWithShaders([NSNumber(unsignedInt:vertexShader), NSNumber(unsignedInt:fragmentShader)], error:&error)
+        program = sender.context.createLinkedProgram(withShaders: [NSNumber(value: vertexShader as UInt32), NSNumber(value: fragmentShader as UInt32)], error:&error)
         if (program == 0) {
           NSLog("program linking failed: \(error)");
         }
@@ -199,7 +199,7 @@ class ColorWheel : UIControl, OpenGLViewDelegate
       }
 
 
-      func deleteStateForOpenGLView(sender: OpenGLView)
+      func deleteStateForOpenGLView(_ sender: OpenGLView)
         {
           // Delete our program and shaders
           if program != 0 {
@@ -217,16 +217,14 @@ class ColorWheel : UIControl, OpenGLViewDelegate
         }
 
 
-      func drawOpenGLView(sender: OpenGLView)
+      func drawOpenGLView(_ sender: OpenGLView)
         {
-          let null = UnsafePointer<Void>(bitPattern:0);
-
           glUseProgram(program)
 
           // Upload the projection matrix
           let rect = self.projectionRect
-          var P = Array(count:16, repeatedValue:GLfloat(0))
-          ortho(&P, left: GLfloat(CGRectGetMinX(rect)), right: GLfloat(CGRectGetMaxX(rect)), bottom: GLfloat(CGRectGetMinY(rect)), top: GLfloat(CGRectGetMaxY(rect)), near: -1, far: 1)
+          var P = Array(repeating: GLfloat(0), count: 16)
+          ortho(&P, left: GLfloat(rect.minX), right: GLfloat(rect.maxX), bottom: GLfloat(rect.minY), top: GLfloat(rect.maxY), near: -1, far: 1)
           glUniformMatrix4fv(projectionLoc, 1, 0, P)
 
           // Draw the color wheel interior as a triangle fan (with per-vertex colors)...
@@ -234,8 +232,8 @@ class ColorWheel : UIControl, OpenGLViewDelegate
           if wheelChanged {
             updateWheelVertexBuffer()
           }
-          glVertexAttribPointer(0, 2, GLenum(GL_FLOAT), 0, GLsizei(sizeof(Vertex)), null)
-          glVertexAttribPointer(1, 4, GLenum(GL_FLOAT), 0, GLsizei(sizeof(Vertex)), null.advancedBy(2*sizeof(GLfloat)))
+          glVertexAttribPointer(0, 2, GLenum(GL_FLOAT), 0, GLsizei(MemoryLayout<Vertex>.size), nil)
+          glVertexAttribPointer(1, 4, GLenum(GL_FLOAT), 0, GLsizei(MemoryLayout<Vertex>.size), UnsafeRawPointer(bitPattern:2*MemoryLayout<GLfloat>.size))
           glEnableVertexAttribArray(1)
           glDrawArrays(GLenum(GL_TRIANGLE_FAN), 0, GLsizei(numberOfSlices + 2))
           glDisableVertexAttribArray(1)
@@ -243,7 +241,7 @@ class ColorWheel : UIControl, OpenGLViewDelegate
           // and draw the perimeter as a line loop in the specified border color.
           if let color = borderColor {
             var r:GLfloat=0, g:GLfloat=0, b:GLfloat=0, a:GLfloat=0
-            color.getGLRed(&r, green:&g, blue:&b, alpha:&a)
+            color.getGL(red:&r, green:&g, blue:&b, alpha:&a)
             glVertexAttrib4f(1, r, g, b, a)
             glDrawArrays(GLenum(GL_LINE_LOOP), 1, GLsizei(numberOfSlices))
           }
@@ -253,27 +251,27 @@ class ColorWheel : UIControl, OpenGLViewDelegate
           if pointChanged {
             updatePointVertexBuffer()
           }
-          glVertexAttribPointer(0, 2, GLenum(GL_FLOAT), 0, GLsizei(sizeof(GLfloat)*2), null)
+          glVertexAttribPointer(0, 2, GLenum(GL_FLOAT), 0, GLsizei(MemoryLayout<GLfloat>.size*2), nil)
           glVertexAttrib4f(1, 1.0, 1.0, 1.0, 1.0)
           glDrawArrays(GLenum(GL_TRIANGLE_STRIP), 0, 4)
 
           // Draw the selected point as a black line loop.
           glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), pointIndexBuffer)
           glVertexAttrib4f(1, 0.0, 0.0, 0.0, 1.0)
-          glDrawElements(GLenum(GL_LINE_LOOP), 4, GLenum(GL_UNSIGNED_BYTE), null)
+          glDrawElements(GLenum(GL_LINE_LOOP), 4, GLenum(GL_UNSIGNED_BYTE), nil)
         }
 
 
       // UIControl
 
-      override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool
+      override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool
         {
           self.processTouch(touch)
           return true
         }
 
 
-      override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool
+      override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool
         {
           self.processTouch(touch)
           return true

@@ -67,7 +67,7 @@ class ColorPickerViewController : UIViewController
       {
         // Invoked whenever our selected color changes. Update the UI if loaded.
 
-        guard isViewLoaded() else { return }
+        guard isViewLoaded else { return }
 
         wheelView.selectedPoint = point
         wheelView.brightness = brightness
@@ -78,7 +78,7 @@ class ColorPickerViewController : UIViewController
       }
 
 
-    @IBAction func colorWheelSelectionDidChange(sender: ColorWheel)
+    @IBAction func colorWheelSelectionDidChange(_ sender: ColorWheel)
       {
         // Invoked in response to changing the selected point within the color wheel view.
 
@@ -88,7 +88,7 @@ class ColorPickerViewController : UIViewController
       }
 
 
-    @IBAction func sliderDidChange(sender: UISlider)
+    @IBAction func sliderDidChange(_ sender: UISlider)
       {
         // Invoked in response to changing the value of the brightness slider.
 
@@ -98,7 +98,7 @@ class ColorPickerViewController : UIViewController
       }
 
 
-    @IBAction func alphaSliderDidChange(sender: UISlider)
+    @IBAction func alphaSliderDidChange(_ sender: UISlider)
       {
         // Invoked in response to change the value of the alpha slider.
 

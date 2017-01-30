@@ -19,9 +19,9 @@ class ColorWheelTableViewController : UITableViewController
 
     convenience init()
       {
-        self.init(style: UITableViewStyle.Plain)
+        self.init(style: UITableViewStyle.plain)
 
-        colors = [ UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor() ]
+        colors = [ UIColor.red, UIColor.green, UIColor.blue ]
 
         colorPickerViewController = ColorPickerViewController()
         colorPickerViewController!.addObserver(self, forKeyPath:"selectedColor", options:NSKeyValueObservingOptions(), context:nil)
@@ -36,25 +36,25 @@ class ColorWheelTableViewController : UITableViewController
       }
 
 
-    func add(sender: UIBarButtonItem)
+    func add(_ sender: UIBarButtonItem)
       {
         // Add a new element to the end of the list
-        colors.append(UIColor.lightGrayColor())
+        colors.append(UIColor.lightGray)
 
         // Inform the table view of the row insertion
-        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow:colors.count-1, inSection:0)], withRowAnimation:UITableViewRowAnimation.Fade);
+        self.tableView.insertRows(at: [IndexPath(row:colors.count-1, section:0)], with:UITableViewRowAnimation.fade);
       }
 
 
     // NSKeyValueObserving
 
-    override func observeValueForKeyPath(path: String?, ofObject sender: AnyObject?, change: [String:AnyObject]?, context:UnsafeMutablePointer<Void>)
+    override func observeValue(forKeyPath path: String?, of sender: Any?, change: [NSKeyValueChangeKey:Any]?, context:UnsafeMutableRawPointer?)
       {
         // Update the corresponding list element
         colors[selectedRow] = colorPickerViewController!.selectedColor
 
         // Ask the table view to reload the effected row
-        self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow:selectedRow, inSection:0)], withRowAnimation:UITableViewRowAnimation.Fade)
+        self.tableView.reloadRows(at: [IndexPath(row:selectedRow, section:0)], with:UITableViewRowAnimation.fade)
       }
 
 
@@ -64,25 +64,25 @@ class ColorWheelTableViewController : UITableViewController
       {
         super.viewDidLoad()
 
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.Add, target:self, action:#selector(ColorWheelTableViewController.add(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.add, target:self, action:#selector(ColorWheelTableViewController.add(_:)))
       }
 
 
     // UITableViewDataSource
 
-    override func tableView(sender: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ sender: UITableView, numberOfRowsInSection section: Int) -> Int
       {
         return colors.count
       }
 
 
-    override func tableView(sender: UITableView, cellForRowAtIndexPath path: NSIndexPath) -> UITableViewCell
+    override func tableView(_ sender: UITableView, cellForRowAt path: IndexPath) -> UITableViewCell
       {
-        var cell = sender.dequeueReusableCellWithIdentifier("cell")
+        var cell = sender.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
-          cell = UITableViewCell(style:UITableViewCellStyle.Default, reuseIdentifier:"cell")
+          cell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"cell")
           cell!.backgroundView = ColorView()
         }
 
@@ -92,21 +92,21 @@ class ColorWheelTableViewController : UITableViewController
       }
 
 
-    override func tableView(sender: UITableView, commitEditingStyle style: UITableViewCellEditingStyle, forRowAtIndexPath path: NSIndexPath)
+    override func tableView(_ sender: UITableView, commit style: UITableViewCellEditingStyle, forRowAt path: IndexPath)
       {
-        assert(style == UITableViewCellEditingStyle.Delete, "unexpected argument")
+        assert(style == UITableViewCellEditingStyle.delete, "unexpected argument")
 
         // Remove the indicated list element
-        colors.removeAtIndex(path.row);
+        colors.remove(at: path.row);
 
         // Inform the table view of the row removal
-        sender.deleteRowsAtIndexPaths([path], withRowAnimation:UITableViewRowAnimation.Fade);
+        sender.deleteRows(at: [path], with:UITableViewRowAnimation.fade);
       }
 
 
     // UITableViewDelegate
 
-    override func tableView(sender: UITableView, didSelectRowAtIndexPath path: NSIndexPath)
+    override func tableView(_ sender: UITableView, didSelectRowAt path: IndexPath)
       {
         // Retain the selected row for posterity
         selectedRow = path.row;

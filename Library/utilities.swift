@@ -9,7 +9,7 @@
 import UIKit
 
 
-func ortho(inout P: [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:GLfloat, near:GLfloat, far:GLfloat)
+func ortho(_ P: inout [GLfloat], left:GLfloat, right:GLfloat, bottom:GLfloat, top:GLfloat, near:GLfloat, far:GLfloat)
   {
     // Create a 4x4 orthographic projection matrix with the given parameters.
 
